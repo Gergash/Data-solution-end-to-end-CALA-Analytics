@@ -1,0 +1,36 @@
+[2026-03-03T09:04:19.020+0000] {processor.py:186} INFO - Started process (PID=508) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:04:19.021+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-03T09:04:19.024+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:19.023+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:04:22.259+0000] {processor.py:925} INFO - DAG(s) 'dag_1_ingestion_transaccional' retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:04:22.360+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.360+0000] {override.py:1911} INFO - Created Permission View: can edit on DAG:dag_1_ingestion_transaccional
+[2026-03-03T09:04:22.372+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.372+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG:dag_1_ingestion_transaccional
+[2026-03-03T09:04:22.383+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.382+0000] {override.py:1911} INFO - Created Permission View: can read on DAG:dag_1_ingestion_transaccional
+[2026-03-03T09:04:22.393+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.393+0000] {override.py:1911} INFO - Created Permission View: can create on DAG Run:dag_1_ingestion_transaccional
+[2026-03-03T09:04:22.403+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.403+0000] {override.py:1911} INFO - Created Permission View: can delete on DAG Run:dag_1_ingestion_transaccional
+[2026-03-03T09:04:22.413+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.413+0000] {override.py:1911} INFO - Created Permission View: menu access on DAG Run:dag_1_ingestion_transaccional
+[2026-03-03T09:04:22.422+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.422+0000] {override.py:1911} INFO - Created Permission View: can read on DAG Run:dag_1_ingestion_transaccional
+[2026-03-03T09:04:22.423+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.423+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-03T09:04:22.439+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.438+0000] {dag.py:3262} INFO - Creating ORM DAG for dag_1_ingestion_transaccional
+[2026-03-03T09:04:22.440+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:22.440+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_1_ingestion_transaccional to None, run_after=None
+[2026-03-03T09:04:22.464+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.709 seconds
+[2026-03-03T09:04:55.452+0000] {processor.py:186} INFO - Started process (PID=532) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:04:55.454+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-03T09:04:55.455+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:55.455+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:04:56.021+0000] {processor.py:925} INFO - DAG(s) 'dag_1_ingestion_transaccional' retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:04:56.047+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:56.046+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-03T09:04:56.076+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:04:56.076+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_1_ingestion_transaccional to None, run_after=None
+[2026-03-03T09:04:56.124+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.679 seconds
+[2026-03-03T09:05:27.777+0000] {processor.py:186} INFO - Started process (PID=556) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:05:27.778+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-03T09:05:27.779+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:05:27.779+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:05:28.267+0000] {processor.py:925} INFO - DAG(s) 'dag_1_ingestion_transaccional' retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:05:28.290+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:05:28.290+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-03T09:05:28.303+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:05:28.303+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_1_ingestion_transaccional to None, run_after=None
+[2026-03-03T09:05:28.329+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.557 seconds
+[2026-03-03T09:05:58.562+0000] {processor.py:186} INFO - Started process (PID=580) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:05:58.563+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-03T09:05:58.565+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:05:58.565+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:05:59.094+0000] {processor.py:925} INFO - DAG(s) 'dag_1_ingestion_transaccional' retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-03T09:05:59.115+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:05:59.114+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-03T09:05:59.131+0000] {logging_mixin.py:190} INFO - [2026-03-03T09:05:59.130+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_1_ingestion_transaccional to None, run_after=None
+[2026-03-03T09:05:59.153+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.598 seconds

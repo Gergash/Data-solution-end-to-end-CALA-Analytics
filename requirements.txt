@@ -6,3 +6,6 @@ pandas
 numpy
 torch
 torchtext
+# RAG: embeddings y búsqueda vectorial
+sentence-transformers
+faiss-cpu

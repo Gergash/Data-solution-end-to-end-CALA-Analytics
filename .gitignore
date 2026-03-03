@@ -1,0 +1,9 @@
+# Archivos sensibles - NO subir
+Backup-codes-gerosaldana2004.txt
+Códigos de copia de seguridad.pdf
+Captura de pantalla 2026-03-02 230920.jpg
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+desktop.ini

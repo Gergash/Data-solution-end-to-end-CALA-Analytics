@@ -3,6 +3,10 @@ Backup-codes-gerosaldana2004.txt
 Códigos de copia de seguridad.pdf
 Captura de pantalla 2026-03-02 230920.jpg
 
+# Credenciales GCP (nunca subir keys)
+gcp-credentials/*.json
+.env
+
 # Archivos del sistema
 .DS_Store
 Thumbs.db

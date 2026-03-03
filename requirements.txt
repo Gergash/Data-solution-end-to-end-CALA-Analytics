@@ -1,0 +1,8 @@
+# Proveedores Google Cloud para BigQuery, GCS, etc.
+apache-airflow-providers-google
+google-cloud-bigquery
+db-dtypes
+pandas
+numpy
+torch
+torchtext

@@ -16,7 +16,7 @@ from utils.rag import chunking_kb, refresh_embeddings
 with DAG(
     dag_id="dag_3_actualizacion_rag",
     schedule_interval=None,
-    start_date=datetime(2025, 1, 1),
+    start_date=datetime(2026, 1, 2),
     catchup=False,
     tags=["rag", "kb", "faiss", "embeddings"],
 ) as dag:

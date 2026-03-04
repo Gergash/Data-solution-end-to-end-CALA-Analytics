@@ -121,5 +121,26 @@ services:
       airflow-init:
         condition: service_completed_successfully
 
+  # API FastAPI: POST /ask (RAG), GET /kpis. Documentación en http://localhost:8000/docs
+  api:
+    image: ${AIRFLOW_IMAGE_NAME:-cala-airflow:latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cala-api
+    working_dir: /app
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ${AIRFLOW_PROJ_DIR:-.}:/app
+      - ${AIRFLOW_PROJ_DIR:-.}/gcp-credentials:/app/gcp-credentials:ro
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-/app/gcp-credentials/key.json}
+      BQ_PROJECT_ID: ${BQ_PROJECT_ID:-}
+      BQ_DATASET_ID: ${BQ_DATASET_ID:-cala_analytics}
+      GCP_PROJECT_ID: ${GCP_PROJECT_ID:-}
+    restart: unless-stopped
+
 volumes:
   postgres-db-volume:

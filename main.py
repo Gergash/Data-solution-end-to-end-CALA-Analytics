@@ -244,4 +244,5 @@ async def health():
 if __name__ == "__main__":
     import uvicorn
 
+    # host 0.0.0.0 para que el mundo exterior (navegador, otros hosts) pueda conectar al contenedor
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

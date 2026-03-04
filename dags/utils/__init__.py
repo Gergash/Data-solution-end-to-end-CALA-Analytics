@@ -15,6 +15,9 @@ BASE_DATOS = os.environ.get("PIPELINE_DATOS_DIR", os.environ.get("AIRFLOW_HOME",
 PATH_ATENCIONES = os.path.join(BASE_DATOS, "atenciones.csv")
 PATH_CLIENTES = os.path.join(BASE_DATOS, "clientes.csv")
 PATH_KB = os.path.join(BASE_DATOS, "kb")
+# En Docker: túnel directo a la base de conocimientos en /opt/airflow/kb
+if os.path.isdir("/opt/airflow/kb"):
+    PATH_KB = "/opt/airflow/kb"
 AIRFLOW_HOME = os.environ.get("AIRFLOW_HOME", "/opt/airflow")
 CLEANED_DIR = os.path.join(AIRFLOW_HOME, "logs", "cleaned")
 ARTEFACTOS_DIR = os.path.join(AIRFLOW_HOME, "logs", "pipeline_ia_artefactos")

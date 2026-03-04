@@ -17,10 +17,10 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field
 
-# Rutas: mismo layout que en Docker (raíz del proyecto = logs/ al lado)
+# Rutas relativas a la raíz que Docker ve (/app): así el código encuentra los archivos en cualquier contenedor
 PROJECT_ROOT = Path(__file__).resolve().parent
 LOGS_DIR = PROJECT_ROOT / "logs"
-EMBEDDINGS_DIR = LOGS_DIR / "embeddings"
+EMBEDDINGS_DIR = LOGS_DIR / "embeddings"  # Carpeta donde el DAG 3 escribe faiss.index y metadata.json
 FAISS_INDEX_PATH = EMBEDDINGS_DIR / "faiss.index"
 METADATA_PATH = EMBEDDINGS_DIR / "metadata.json"
 AUDIT_LOG_PATH = LOGS_DIR / "ask_audit.log"
@@ -98,6 +98,7 @@ async def lifespan(app: FastAPI):
     Intenta cargar artefactos al inicio; si fallan, la API arranca igual.
     /health indicará rag_cargado=false; /ask intentará cargar una vez más en la primera llamada (lazy loading).
     """
+    EMBEDDINGS_DIR.mkdir(parents=True, exist_ok=True)  # Asegura que la carpeta exista físicamente
     if _load_artefacts():
         print("[OK] FAISS, metadata y modelo de embeddings cargados.")
     else:

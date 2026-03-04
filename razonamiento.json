@@ -2,13 +2,25 @@
   "nodes": [
     {
       "id": "query_1",
-      "name": "Otra peticion a la API",
+      "name": "Que conocimientos tiene este RAG?",
       "symbolSize": 50,
       "category": 0
     },
     {
+      "id": "glosario_eventos.md",
+      "name": "glosario_eventos.md",
+      "symbolSize": 30,
+      "category": 1
+    },
+    {
       "id": "politicas.md",
       "name": "politicas.md",
+      "symbolSize": 30,
+      "category": 1
+    },
+    {
+      "id": "faq_operativa.md",
+      "name": "faq_operativa.md",
       "symbolSize": 30,
       "category": 1
     },
@@ -19,20 +31,8 @@
       "category": 1
     },
     {
-      "id": "glosario_eventos.md",
-      "name": "glosario_eventos.md",
-      "symbolSize": 30,
-      "category": 1
-    },
-    {
       "id": "arquitectura_actual.md",
       "name": "arquitectura_actual.md",
-      "symbolSize": 30,
-      "category": 1
-    },
-    {
-      "id": "faq_operativa.md",
-      "name": "faq_operativa.md",
       "symbolSize": 30,
       "category": 1
     }
@@ -40,7 +40,15 @@
   "links": [
     {
       "source": "query_1",
+      "target": "glosario_eventos.md"
+    },
+    {
+      "source": "query_1",
       "target": "politicas.md"
+    },
+    {
+      "source": "query_1",
+      "target": "faq_operativa.md"
     },
     {
       "source": "query_1",
@@ -48,15 +56,7 @@
     },
     {
       "source": "query_1",
-      "target": "glosario_eventos.md"
-    },
-    {
-      "source": "query_1",
       "target": "arquitectura_actual.md"
-    },
-    {
-      "source": "query_1",
-      "target": "faq_operativa.md"
     }
   ],
   "categories": [

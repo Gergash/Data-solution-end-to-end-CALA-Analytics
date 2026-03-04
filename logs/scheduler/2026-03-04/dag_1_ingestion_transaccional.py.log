@@ -5826,3 +5826,468 @@ Traceback (most recent call last):
 TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
 [2026-03-04T16:58:58.587+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
 [2026-03-04T16:58:58.617+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.075 seconds
+[2026-03-04T16:59:31.571+0000] {processor.py:186} INFO - Started process (PID=3685) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T16:59:31.572+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T16:59:31.573+0000] {logging_mixin.py:190} INFO - [2026-03-04T16:59:31.573+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T16:59:31.617+0000] {logging_mixin.py:190} INFO - [2026-03-04T16:59:31.612+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T16:59:31.620+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T16:59:31.654+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.089 seconds
+[2026-03-04T17:00:05.589+0000] {processor.py:186} INFO - Started process (PID=3705) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:00:05.590+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:00:05.592+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:00:05.592+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:00:05.635+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:00:05.630+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:00:05.637+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:00:05.659+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.075 seconds
+[2026-03-04T17:00:38.614+0000] {processor.py:186} INFO - Started process (PID=3725) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:00:38.615+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:00:38.617+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:00:38.616+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:00:38.658+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:00:38.653+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:00:38.660+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:00:38.688+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.079 seconds
+[2026-03-04T17:01:11.611+0000] {processor.py:186} INFO - Started process (PID=3745) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:01:11.612+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:01:11.613+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:01:11.613+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:01:11.670+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:01:11.661+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:01:11.673+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:01:11.699+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.102 seconds
+[2026-03-04T17:01:44.791+0000] {processor.py:186} INFO - Started process (PID=3765) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:01:44.792+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:01:44.793+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:01:44.793+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:01:44.830+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:01:44.825+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:01:44.832+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:01:44.869+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.084 seconds
+[2026-03-04T17:02:18.843+0000] {processor.py:186} INFO - Started process (PID=3785) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:02:18.844+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:02:18.845+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:02:18.845+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:02:18.886+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:02:18.881+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:02:18.888+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:02:18.911+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.074 seconds
+[2026-03-04T17:02:51.848+0000] {processor.py:186} INFO - Started process (PID=3805) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:02:51.849+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:02:51.850+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:02:51.850+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:02:51.887+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:02:51.882+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:02:51.889+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:02:51.913+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.077 seconds
+[2026-03-04T17:03:24.864+0000] {processor.py:186} INFO - Started process (PID=3825) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:03:24.865+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:03:24.866+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:03:24.865+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:03:24.904+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:03:24.898+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:03:24.906+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:03:24.936+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.077 seconds
+[2026-03-04T17:03:58.753+0000] {processor.py:186} INFO - Started process (PID=3845) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:03:58.755+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:03:58.757+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:03:58.757+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:03:58.814+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:03:58.806+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:03:58.816+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:03:58.847+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.107 seconds
+[2026-03-04T17:04:31.847+0000] {processor.py:186} INFO - Started process (PID=3865) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:04:31.849+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:04:31.850+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:04:31.850+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:04:31.903+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:04:31.898+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:04:31.905+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:04:31.959+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.119 seconds
+[2026-03-04T17:05:05.060+0000] {processor.py:186} INFO - Started process (PID=3885) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:05:05.061+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:05:05.063+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:05:05.062+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:05:05.100+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:05:05.096+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:05:05.102+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:05:05.129+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.076 seconds
+[2026-03-04T17:05:39.056+0000] {processor.py:186} INFO - Started process (PID=3905) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:05:39.057+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:05:39.059+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:05:39.058+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:05:39.101+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:05:39.093+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:05:39.103+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:05:39.126+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.078 seconds
+[2026-03-04T17:06:11.902+0000] {processor.py:186} INFO - Started process (PID=3925) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:06:11.903+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:06:11.905+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:06:11.904+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:06:11.948+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:06:11.941+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:06:11.951+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:06:11.979+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.083 seconds
+[2026-03-04T17:06:45.043+0000] {processor.py:186} INFO - Started process (PID=3945) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:06:45.044+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:06:45.045+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:06:45.045+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:06:45.081+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:06:45.077+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:06:45.084+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:06:45.108+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.071 seconds
+[2026-03-04T17:07:18.139+0000] {processor.py:186} INFO - Started process (PID=3965) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:07:18.140+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:07:18.141+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:07:18.141+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:07:18.174+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:07:18.170+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:07:18.176+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:07:18.200+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.066 seconds
+[2026-03-04T17:07:52.174+0000] {processor.py:186} INFO - Started process (PID=3985) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:07:52.175+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:07:52.176+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:07:52.176+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:07:52.219+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:07:52.213+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:07:52.221+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:07:52.252+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.090 seconds
+[2026-03-04T17:08:25.219+0000] {processor.py:186} INFO - Started process (PID=4005) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:08:25.221+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:08:25.223+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:08:25.223+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:08:25.264+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:08:25.258+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:08:25.267+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:08:25.295+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.085 seconds
+[2026-03-04T17:08:58.274+0000] {processor.py:186} INFO - Started process (PID=4025) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:08:58.275+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:08:58.277+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:08:58.276+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:08:58.320+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:08:58.314+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:08:58.323+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:08:58.354+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.086 seconds
+[2026-03-04T17:09:32.158+0000] {processor.py:186} INFO - Started process (PID=4045) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:09:32.159+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:09:32.161+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:09:32.160+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:09:32.196+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:09:32.193+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:09:32.199+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:09:32.221+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.068 seconds
+[2026-03-04T17:10:05.439+0000] {processor.py:186} INFO - Started process (PID=4065) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:10:05.440+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:10:05.442+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:10:05.442+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:10:05.478+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:10:05.473+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:10:05.480+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:10:05.504+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.070 seconds
+[2026-03-04T17:10:38.443+0000] {processor.py:186} INFO - Started process (PID=4085) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:10:38.445+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:10:38.447+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:10:38.446+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:10:38.493+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:10:38.487+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:10:38.496+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:10:38.529+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.094 seconds
+[2026-03-04T17:11:11.517+0000] {processor.py:186} INFO - Started process (PID=4105) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:11:11.518+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:11:11.521+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:11:11.520+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:11:11.578+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:11:11.570+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:11:11.582+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:11:11.625+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.121 seconds
+[2026-03-04T17:11:45.439+0000] {processor.py:186} INFO - Started process (PID=4125) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:11:45.440+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:11:45.441+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:11:45.440+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:11:45.475+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:11:45.471+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:11:45.477+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:11:45.507+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.074 seconds
+[2026-03-04T17:12:18.275+0000] {processor.py:186} INFO - Started process (PID=4145) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:12:18.277+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:12:18.278+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:12:18.278+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:12:18.314+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:12:18.310+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:12:18.316+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:12:18.340+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.069 seconds
+[2026-03-04T17:12:52.277+0000] {processor.py:186} INFO - Started process (PID=4165) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:12:52.278+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:12:52.279+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:12:52.279+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:12:52.324+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:12:52.319+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:12:52.326+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:12:52.356+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.085 seconds
+[2026-03-04T17:13:25.125+0000] {processor.py:186} INFO - Started process (PID=4185) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:13:25.126+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:13:25.128+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:13:25.128+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:13:25.168+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:13:25.162+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:13:25.170+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:13:25.196+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.079 seconds
+[2026-03-04T17:13:58.159+0000] {processor.py:186} INFO - Started process (PID=4205) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:13:58.160+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:13:58.161+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:13:58.161+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:13:58.200+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:13:58.195+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:13:58.202+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:13:58.228+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.074 seconds
+[2026-03-04T17:14:32.185+0000] {processor.py:186} INFO - Started process (PID=4225) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:14:32.186+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:14:32.187+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:14:32.187+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:14:32.231+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:14:32.224+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:14:32.233+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:14:32.264+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.086 seconds
+[2026-03-04T17:15:05.363+0000] {processor.py:186} INFO - Started process (PID=4245) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:15:05.364+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:15:05.365+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:15:05.365+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:15:05.405+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:15:05.401+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:15:05.407+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:15:05.432+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.074 seconds
+[2026-03-04T17:15:38.349+0000] {processor.py:186} INFO - Started process (PID=4265) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:15:38.350+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:15:38.351+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:15:38.351+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:15:38.394+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:15:38.388+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:15:38.396+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:15:38.421+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.079 seconds
+[2026-03-04T17:16:11.547+0000] {processor.py:186} INFO - Started process (PID=4285) to work on /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:16:11.548+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_1_ingestion_transaccional.py for tasks to queue
+[2026-03-04T17:16:11.550+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:16:11.549+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:16:11.592+0000] {logging_mixin.py:190} INFO - [2026-03-04T17:16:11.587+0000] {dagbag.py:387} ERROR - Failed to import: /opt/airflow/dags/dag_1_ingestion_transaccional.py
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/dagbag.py", line 383, in parse
+    loader.exec_module(new_module)
+  File "<frozen importlib._bootstrap_external>", line 999, in exec_module
+  File "<frozen importlib._bootstrap>", line 488, in _call_with_frames_removed
+  File "/opt/airflow/dags/dag_1_ingestion_transaccional.py", line 27, in <module>
+    with DAG(
+         ^^^^
+TypeError: DAG.__init__() got an unexpected keyword argument 'default_params'
+[2026-03-04T17:16:11.595+0000] {processor.py:927} WARNING - No viable dags retrieved from /opt/airflow/dags/dag_1_ingestion_transaccional.py
+[2026-03-04T17:16:11.620+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_1_ingestion_transaccional.py took 0.078 seconds

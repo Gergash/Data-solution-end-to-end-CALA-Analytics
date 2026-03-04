@@ -20,7 +20,7 @@
             <div id="gauge" style="width: 100%; height: 320px;"></div>
         </div>
         <div class="panel panel-graph">
-            <h2>Grafo de Razonamiento IA</h2>
+            <h2>Grafo de Razonamiento IA Pregunta → Documentos citados</h2>
             <div id="main" style="width: 100%; height: 500px;"></div>
         </div>
     </div>
@@ -111,7 +111,7 @@
             graphData.nodes.forEach(function (node) { node.label = { show: true }; });
             myChart.setOption({
                 title: {
-                    text: 'Pregunta → Documentos citados',
+                    text: '..',
                     subtext: 'Actualizado en cada /ask',
                     top: 'top',
                     left: 'center'

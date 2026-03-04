@@ -1,0 +1,21 @@
+[2026-03-04T21:46:08.187+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T21:46:08.208+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_1_ingestion_transaccional.ejecutar_kpi_recurrencia_30d manual__2026-03-04T16:45:33-05:00 [queued]>
+[2026-03-04T21:46:08.218+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_1_ingestion_transaccional.ejecutar_kpi_recurrencia_30d manual__2026-03-04T16:45:33-05:00 [queued]>
+[2026-03-04T21:46:08.219+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T21:46:08.233+0000] {taskinstance.py:2889} INFO - Executing <Task(BigQueryInsertJobOperator): ejecutar_kpi_recurrencia_30d> on 2026-03-04 21:45:33+00:00
+[2026-03-04T21:46:08.244+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_1_ingestion_transaccional', 'ejecutar_kpi_recurrencia_30d', 'manual__2026-03-04T16:45:33-05:00', '--job-id', '43', '--raw', '--subdir', 'DAGS_FOLDER/dag_1_ingestion_transaccional.py', '--cfg-path', '/tmp/tmp3kh0fj5a']
+[2026-03-04T21:46:08.247+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=253) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T21:46:08.248+0000] {standard_task_runner.py:105} INFO - Job 43: Subtask ejecutar_kpi_recurrencia_30d
+[2026-03-04T21:46:08.249+0000] {standard_task_runner.py:72} INFO - Started process 260 to run task
+[2026-03-04T21:46:08.313+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_1_ingestion_transaccional.ejecutar_kpi_recurrencia_30d manual__2026-03-04T16:45:33-05:00 [running]> on host d7ac9a3855ad
+[2026-03-04T21:46:08.724+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_1_ingestion_transaccional' AIRFLOW_CTX_TASK_ID='ejecutar_kpi_recurrencia_30d' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T21:45:33+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T16:45:33-05:00'
+[2026-03-04T21:46:08.726+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T21:46:08.760+0000] {connection.py:277} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2026-03-04T21:46:08.762+0000] {base.py:84} INFO - Retrieving connection 'google_cloud_default'
+[2026-03-04T21:46:08.763+0000] {bigquery.py:2620} INFO - Executing: {'query': {'query': '-- Vista KPI: clientes recurrentes (≥2 atenciones en ventana 30d).\n-- Corrección: Uso de UNIX_DATE para que RANGE funcione (BigQuery exige tipo numérico en ORDER BY para RANGE).\nCREATE OR REPLACE VIEW `data-solution-end-to-end-21.cala_analytics.v_kpi_recurrencia_30d` AS\nWITH ventana AS (\n  SELECT id_cliente, fecha_proceso,\n    COUNT(*) OVER (\n      PARTITION BY id_cliente\n      ORDER BY UNIX_DATE(DATE(fecha_proceso))\n      RANGE BETWEEN 30 PRECEDING AND CURRENT ROW\n    ) AS atenciones_30d\n  FROM `data-solution-end-to-end-21.cala_analytics.atenciones`\n  WHERE fecha_proceso IS NOT NULL\n)\nSELECT fecha_proceso, COUNT(DISTINCT id_cliente) AS clientes_recurrentes_30d\nFROM ventana WHERE atenciones_30d >= 2\nGROUP BY fecha_proceso ORDER BY fecha_proceso;', 'useLegacySql': False}}'
+[2026-03-04T21:46:08.811+0000] {bigquery.py:1241} INFO - Inserting job ***_dag_1_ingestion_transaccional_ejecutar_kpi_recurrencia_30d_2026_03_04T21_45_33_00_00_8e3ce18ba7660bfc01ebc253a7233ba9
+[2026-03-04T21:46:10.107+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T21:46:10.108+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dag_1_ingestion_transaccional, task_id=ejecutar_kpi_recurrencia_30d, run_id=manual__2026-03-04T16:45:33-05:00, execution_date=20260304T214533, start_date=20260304T214608, end_date=20260304T214610
+[2026-03-04T21:46:10.151+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-03-04T21:46:10.172+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T21:46:10.192+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

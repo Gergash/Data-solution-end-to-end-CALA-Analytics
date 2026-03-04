@@ -1,0 +1,21 @@
+[2026-03-04T22:11:35.034+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T22:11:35.054+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_1_ingestion_transaccional.ejecutar_kpi_rendimiento_plataforma manual__2026-03-04T17:10:55-05:00 [queued]>
+[2026-03-04T22:11:35.064+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_1_ingestion_transaccional.ejecutar_kpi_rendimiento_plataforma manual__2026-03-04T17:10:55-05:00 [queued]>
+[2026-03-04T22:11:35.065+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T22:11:35.077+0000] {taskinstance.py:2889} INFO - Executing <Task(BigQueryInsertJobOperator): ejecutar_kpi_rendimiento_plataforma> on 2026-03-04 22:10:55+00:00
+[2026-03-04T22:11:35.086+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_1_ingestion_transaccional', 'ejecutar_kpi_rendimiento_plataforma', 'manual__2026-03-04T17:10:55-05:00', '--job-id', '56', '--raw', '--subdir', 'DAGS_FOLDER/dag_1_ingestion_transaccional.py', '--cfg-path', '/tmp/tmph9gmvrtg']
+[2026-03-04T22:11:35.088+0000] {standard_task_runner.py:105} INFO - Job 56: Subtask ejecutar_kpi_rendimiento_plataforma
+[2026-03-04T22:11:35.089+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1293) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T22:11:35.090+0000] {standard_task_runner.py:72} INFO - Started process 1297 to run task
+[2026-03-04T22:11:35.160+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_1_ingestion_transaccional.ejecutar_kpi_rendimiento_plataforma manual__2026-03-04T17:10:55-05:00 [running]> on host d7ac9a3855ad
+[2026-03-04T22:11:35.518+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_1_ingestion_transaccional' AIRFLOW_CTX_TASK_ID='ejecutar_kpi_rendimiento_plataforma' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T22:10:55+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T17:10:55-05:00'
+[2026-03-04T22:11:35.520+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T22:11:35.549+0000] {connection.py:277} WARNING - Connection schemes (type: google_cloud_platform) shall not contain '_' according to RFC3986.
+[2026-03-04T22:11:35.551+0000] {base.py:84} INFO - Retrieving connection 'google_cloud_default'
+[2026-03-04T22:11:35.552+0000] {bigquery.py:2620} INFO - Executing: {'query': {'query': '-- KPI: latencia promedio por plataforma y tipo de evento (iOS/Android/Web).\nCREATE OR REPLACE VIEW `data-solution-end-to-end-21.cala_analytics.v_kpi_latencia_plataforma` AS\nSELECT\n    plataforma,\n    event_name,\n    AVG(latencia_ms) AS latencia_promedio,\n    COUNT(*) AS volumen_eventos\nFROM `data-solution-end-to-end-21.cala_analytics.eventos_app`\nGROUP BY 1, 2\nORDER BY latencia_promedio DESC;', 'useLegacySql': False}}'
+[2026-03-04T22:11:35.598+0000] {bigquery.py:1241} INFO - Inserting job ***_dag_1_ingestion_transaccional_ejecutar_kpi_rendimiento_plataforma_2026_03_04T22_10_55_00_00_e83872ce5aab5d07b1d6808d9a4f8354
+[2026-03-04T22:11:37.111+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T22:11:37.112+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dag_1_ingestion_transaccional, task_id=ejecutar_kpi_rendimiento_plataforma, run_id=manual__2026-03-04T17:10:55-05:00, execution_date=20260304T221055, start_date=20260304T221135, end_date=20260304T221137
+[2026-03-04T22:11:37.150+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-03-04T22:11:37.170+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T22:11:37.173+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

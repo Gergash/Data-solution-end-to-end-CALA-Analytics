@@ -2,9 +2,27 @@
   "nodes": [
     {
       "id": "query_1",
-      "name": "Otra peticion a la API",
+      "name": "creo que ya me esta empezando a dar migr…",
       "symbolSize": 50,
       "category": 0
+    },
+    {
+      "id": "faq_operativa.md",
+      "name": "faq_operativa.md",
+      "symbolSize": 30,
+      "category": 1
+    },
+    {
+      "id": "arquitectura_actual.md",
+      "name": "arquitectura_actual.md",
+      "symbolSize": 30,
+      "category": 1
+    },
+    {
+      "id": "glosario_eventos.md",
+      "name": "glosario_eventos.md",
+      "symbolSize": 30,
+      "category": 1
     },
     {
       "id": "politicas.md",
@@ -17,38 +35,12 @@
       "name": "definiciones.md",
       "symbolSize": 30,
       "category": 1
-    },
-    {
-      "id": "glosario_eventos.md",
-      "name": "glosario_eventos.md",
-      "symbolSize": 30,
-      "category": 1
-    },
-    {
-      "id": "arquitectura_actual.md",
-      "name": "arquitectura_actual.md",
-      "symbolSize": 30,
-      "category": 1
-    },
-    {
-      "id": "faq_operativa.md",
-      "name": "faq_operativa.md",
-      "symbolSize": 30,
-      "category": 1
     }
   ],
   "links": [
     {
       "source": "query_1",
-      "target": "politicas.md"
-    },
-    {
-      "source": "query_1",
-      "target": "definiciones.md"
-    },
-    {
-      "source": "query_1",
-      "target": "glosario_eventos.md"
+      "target": "faq_operativa.md"
     },
     {
       "source": "query_1",
@@ -56,7 +48,15 @@
     },
     {
       "source": "query_1",
-      "target": "faq_operativa.md"
+      "target": "glosario_eventos.md"
+    },
+    {
+      "source": "query_1",
+      "target": "politicas.md"
+    },
+    {
+      "source": "query_1",
+      "target": "definiciones.md"
     }
   ],
   "categories": [

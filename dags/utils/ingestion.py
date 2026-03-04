@@ -1,6 +1,7 @@
 """Funciones para DAG 1: ingestión transaccional y BigQuery."""
 from __future__ import annotations
 
+import json
 import os
 
 import pandas as pd
@@ -54,9 +55,11 @@ def cargar_bigquery_atenciones_clientes() -> None:
         df_at["fecha_proceso"] = pd.to_datetime(df_at["fecha_proceso"])
     if "valor_facturado" in df_at.columns:
         df_at["valor_facturado"] = pd.to_numeric(df_at["valor_facturado"], errors="coerce").astype("float64")
-    # json_detalle: BigQuery espera tipo JSON; el CSV viene como string (válido JSON)
+    # json_detalle: enviar como STRING en la carga; BigQuery lo guarda en columna JSON del DDL
     if "json_detalle" in df_at.columns:
-        df_at["json_detalle"] = df_at["json_detalle"].astype(str).replace("nan", None)
+        df_at["json_detalle"] = df_at["json_detalle"].apply(
+            lambda x: json.dumps(x) if isinstance(x, (dict, list)) else str(x) if pd.notnull(x) else "{}"
+        )
 
     # Clientes: score_crediticio INT64
     if "score_crediticio" in df_cl.columns:
@@ -64,7 +67,7 @@ def cargar_bigquery_atenciones_clientes() -> None:
     if "fecha_registro" in df_cl.columns:
         df_cl["fecha_registro"] = pd.to_datetime(df_cl["fecha_registro"])
 
-    # Schema atenciones: obligatorio para columna JSON (evita "Unable to determine type for field")
+    # Schema atenciones: json_detalle como STRING en la carga (BigQuery hace cast a JSON en la tabla)
     schema_atenciones = [
         bigquery.SchemaField("id_atencion", "STRING", mode="NULLABLE"),
         bigquery.SchemaField("id_cliente", "STRING", mode="NULLABLE"),
@@ -75,7 +78,7 @@ def cargar_bigquery_atenciones_clientes() -> None:
         bigquery.SchemaField("estado", "STRING", mode="NULLABLE"),
         bigquery.SchemaField("codigo_cups", "STRING", mode="NULLABLE"),
         bigquery.SchemaField("canal_ingreso", "STRING", mode="NULLABLE"),
-        bigquery.SchemaField("json_detalle", "JSON", mode="NULLABLE"),
+        bigquery.SchemaField("json_detalle", "STRING", mode="NULLABLE"),
     ]
     cols_at = [f.name for f in schema_atenciones]
     df_at = df_at.reindex(columns=[c for c in cols_at if c in df_at.columns])

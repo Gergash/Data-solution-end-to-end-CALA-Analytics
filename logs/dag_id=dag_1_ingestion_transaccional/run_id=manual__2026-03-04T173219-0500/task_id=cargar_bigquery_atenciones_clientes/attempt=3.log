@@ -1,0 +1,112 @@
+[2026-03-04T22:38:23.545+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T22:38:23.564+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_1_ingestion_transaccional.cargar_bigquery_atenciones_clientes manual__2026-03-04T17:32:19-05:00 [queued]>
+[2026-03-04T22:38:23.574+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_1_ingestion_transaccional.cargar_bigquery_atenciones_clientes manual__2026-03-04T17:32:19-05:00 [queued]>
+[2026-03-04T22:38:23.575+0000] {taskinstance.py:2866} INFO - Starting attempt 3 of 3
+[2026-03-04T22:38:23.589+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): cargar_bigquery_atenciones_clientes> on 2026-03-04 22:32:19+00:00
+[2026-03-04T22:38:23.598+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_1_ingestion_transaccional', 'cargar_bigquery_atenciones_clientes', 'manual__2026-03-04T17:32:19-05:00', '--job-id', '85', '--raw', '--subdir', 'DAGS_FOLDER/dag_1_ingestion_transaccional.py', '--cfg-path', '/tmp/tmpnvbk2_l6']
+[2026-03-04T22:38:23.600+0000] {standard_task_runner.py:105} INFO - Job 85: Subtask cargar_bigquery_atenciones_clientes
+[2026-03-04T22:38:23.600+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=555) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T22:38:23.601+0000] {standard_task_runner.py:72} INFO - Started process 560 to run task
+[2026-03-04T22:38:23.699+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_1_ingestion_transaccional.cargar_bigquery_atenciones_clientes manual__2026-03-04T17:32:19-05:00 [running]> on host 6db8ac2a4a54
+[2026-03-04T22:38:23.985+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_1_ingestion_transaccional' AIRFLOW_CTX_TASK_ID='cargar_bigquery_atenciones_clientes' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T22:32:19+00:00' AIRFLOW_CTX_TRY_NUMBER='3' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T17:32:19-05:00'
+[2026-03-04T22:38:23.986+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T22:38:24.189+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/google/cloud/bigquery/_pandas_helpers.py:193 UserWarning: Unable to determine type for field 'json_detalle'.
+[2026-03-04T22:38:25.978+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/utils/ingestion.py", line 95, in cargar_bigquery_atenciones_clientes
+    client.load_table_from_dataframe(df_at, table_atenciones, job_config=job_config_at).result()
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/base.py", line 971, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Unsupported field type: JSON; reason: invalid, message: Unsupported field type: JSON
+[2026-03-04T22:38:25.997+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=dag_1_ingestion_transaccional, task_id=cargar_bigquery_atenciones_clientes, run_id=manual__2026-03-04T17:32:19-05:00, execution_date=20260304T223219, start_date=20260304T223823, end_date=20260304T223825
+[2026-03-04T22:38:26.017+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T22:38:26.018+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 85 for task cargar_bigquery_atenciones_clientes (400 Unsupported field type: JSON; reason: invalid, message: Unsupported field type: JSON; 560)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/utils/ingestion.py", line 95, in cargar_bigquery_atenciones_clientes
+    client.load_table_from_dataframe(df_at, table_atenciones, job_config=job_config_at).result()
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/cloud/bigquery/job/base.py", line 971, in result
+    return super(_AsyncJob, self).result(timeout=timeout, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/google/api_core/future/polling.py", line 261, in result
+    raise self._exception
+google.api_core.exceptions.BadRequest: 400 Unsupported field type: JSON; reason: invalid, message: Unsupported field type: JSON
+[2026-03-04T22:38:26.064+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-03-04T22:38:26.089+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T22:38:26.095+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

@@ -2,13 +2,19 @@
   "nodes": [
     {
       "id": "query_1",
-      "name": "Cual es la arquitectura de este sistema",
+      "name": "Otra peticion a la API",
       "symbolSize": 50,
       "category": 0
     },
     {
-      "id": "arquitectura_actual.md",
-      "name": "arquitectura_actual.md",
+      "id": "politicas.md",
+      "name": "politicas.md",
+      "symbolSize": 30,
+      "category": 1
+    },
+    {
+      "id": "definiciones.md",
+      "name": "definiciones.md",
       "symbolSize": 30,
       "category": 1
     },
@@ -19,8 +25,8 @@
       "category": 1
     },
     {
-      "id": "politicas.md",
-      "name": "politicas.md",
+      "id": "arquitectura_actual.md",
+      "name": "arquitectura_actual.md",
       "symbolSize": 30,
       "category": 1
     },
@@ -29,18 +35,16 @@
       "name": "faq_operativa.md",
       "symbolSize": 30,
       "category": 1
-    },
-    {
-      "id": "definiciones.md",
-      "name": "definiciones.md",
-      "symbolSize": 30,
-      "category": 1
     }
   ],
   "links": [
     {
       "source": "query_1",
-      "target": "arquitectura_actual.md"
+      "target": "politicas.md"
+    },
+    {
+      "source": "query_1",
+      "target": "definiciones.md"
     },
     {
       "source": "query_1",
@@ -48,15 +52,11 @@
     },
     {
       "source": "query_1",
-      "target": "politicas.md"
+      "target": "arquitectura_actual.md"
     },
     {
       "source": "query_1",
       "target": "faq_operativa.md"
-    },
-    {
-      "source": "query_1",
-      "target": "definiciones.md"
     }
   ],
   "categories": [

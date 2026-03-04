@@ -1,17 +1,22 @@
 """
 DAG 3: Actualización RAG (Knowledge Base + embeddings).
 Chunking de /kb (archivo + fragmento) y refresh de vectores FAISS para POST /ask.
-ExternalTaskSensor espera a que todo el DAG 1 termine (external_task_id=None)
-con mode='reschedule' para no bloquear CPU en Docker; timeout=3600 (1 h).
-Para solo actualizar RAG (nuevos .md en /kb): tras timeout, re-ejecuta chunking_kb y refresh_embeddings.
+ExternalTaskSensor espera a que el DAG 1 haya terminado (execution_date_fn = Opción 1).
+mode='reschedule', timeout=3600 (1 h). Tras timeout, re-ejecuta solo chunking_kb y refresh_embeddings.
 """
-from datetime import datetime
+from datetime import datetime, timedelta
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 from airflow.sensors.external_task import ExternalTaskSensor
 
 from utils.rag import chunking_kb, refresh_embeddings
+
+
+def elegir_ejecucion_reciente(logical_date, **kwargs):
+    """Opción 1: devuelve un único datetime para que el sensor busque esa ejecución del DAG 1 (la misma logical_date)."""
+    return logical_date
+
 
 with DAG(
     dag_id="dag_3_actualizacion_rag",
@@ -23,8 +28,7 @@ with DAG(
     esperar_ingestion = ExternalTaskSensor(
         task_id="esperar_ingestion_transaccional",
         external_dag_id="dag_1_ingestion_transaccional",
-        external_task_id=None,
-        check_existence=True,
+        execution_date_fn=elegir_ejecucion_reciente,
         poke_interval=60,
         timeout=3600,
         mode="reschedule",

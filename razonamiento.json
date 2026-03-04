@@ -2,7 +2,7 @@
   "nodes": [
     {
       "id": "query_1",
-      "name": "Que conocimientos tiene este RAG?",
+      "name": "Este sistema estara listo con que compon…",
       "symbolSize": 50,
       "category": 0
     },
@@ -25,14 +25,14 @@
       "category": 1
     },
     {
-      "id": "definiciones.md",
-      "name": "definiciones.md",
+      "id": "arquitectura_actual.md",
+      "name": "arquitectura_actual.md",
       "symbolSize": 30,
       "category": 1
     },
     {
-      "id": "arquitectura_actual.md",
-      "name": "arquitectura_actual.md",
+      "id": "definiciones.md",
+      "name": "definiciones.md",
       "symbolSize": 30,
       "category": 1
     }
@@ -52,11 +52,11 @@
     },
     {
       "source": "query_1",
-      "target": "definiciones.md"
+      "target": "arquitectura_actual.md"
     },
     {
       "source": "query_1",
-      "target": "arquitectura_actual.md"
+      "target": "definiciones.md"
     }
   ],
   "categories": [

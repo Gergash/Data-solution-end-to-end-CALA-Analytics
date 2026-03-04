@@ -7,6 +7,7 @@ import os
 from datetime import datetime
 
 from airflow import DAG
+from airflow.models import Variable
 from airflow.operators.python import PythonOperator
 from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 
@@ -19,9 +20,11 @@ from utils.ingestion import (
 # Búsqueda de plantillas: Airflow resuelve {% include '...' %} desde esta ruta (Docker: /opt/airflow/scripts_sql)
 TEMPLATE_SEARCHPATH = ["/opt/airflow/scripts_sql"]
 
+# Project ID desde Variable de Airflow (Admin > Variables) o valor por defecto
+project_id = Variable.get("GCP_PROJECT_ID", default_var="data-solution-end-to-end-21")
 # Parámetros inyectados en todos los .sql (bq_project, bq_dataset)
 DEFAULT_PARAMS = {
-    "bq_project": os.environ.get("BQ_PROJECT_ID") or os.environ.get("GCP_PROJECT_ID") or "",
+    "bq_project": project_id,
     "bq_dataset": os.environ.get("BQ_DATASET_ID", "cala_analytics"),
 }
 

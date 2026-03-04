@@ -5,6 +5,8 @@ import os
 
 import pandas as pd
 
+from airflow.models import Variable
+
 from utils import CLEANED_DIR, PATH_ATENCIONES, PATH_CLIENTES, PATH_EVENTOS_APP, limpiar_y_estandarizar
 
 
@@ -29,10 +31,10 @@ def cargar_bigquery_atenciones_clientes() -> None:
     except ImportError:
         print("[SKIP] google-cloud-bigquery no disponible.")
         return
-    project_id = os.environ.get("BQ_PROJECT_ID") or os.environ.get("GCP_PROJECT_ID")
+    project_id = Variable.get("GCP_PROJECT_ID", default_var="data-solution-end-to-end-21")
     dataset_id = os.environ.get("BQ_DATASET_ID", "cala_analytics")
     if not project_id:
-        print("[SKIP] BQ_PROJECT_ID o GCP_PROJECT_ID no definido.")
+        print("[SKIP] Variable GCP_PROJECT_ID no definida.")
         return
     client = bigquery.Client(project=project_id)
     table_atenciones = f"{project_id}.{dataset_id}.atenciones"
@@ -77,6 +79,10 @@ def cargar_bigquery_atenciones_clientes() -> None:
     ]
     cols_at = [f.name for f in schema_atenciones]
     df_at = df_at.reindex(columns=[c for c in cols_at if c in df_at.columns])
+    # Convertir columnas STRING para que PyArrow/BigQuery coincidan con el DDL
+    for col in ["id_atencion", "id_cliente", "documento_cliente", "estado", "codigo_cups", "canal_ingreso"]:
+        if col in df_at.columns:
+            df_at[col] = df_at[col].astype(str)
     job_config_at = bigquery.LoadJobConfig(
         schema=schema_atenciones,
         write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
@@ -84,11 +90,19 @@ def cargar_bigquery_atenciones_clientes() -> None:
             type_=bigquery.TimePartitioningType.DAY,
             field="fecha_atencion",
         ),
+        clustering_fields=["id_cliente", "estado"],
     )
     client.load_table_from_dataframe(df_at, table_atenciones, job_config=job_config_at).result()
-    client.load_table_from_dataframe(
-        df_cl, table_clientes, job_config=bigquery.LoadJobConfig(write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE)
-    ).result()
+
+    # Clientes: tipos alineados con DDL (STRING, TIMESTAMP, INT64); clustering como en create_table_clientes.sql
+    for col in ["id_cliente", "documento", "segmento", "ciudad"]:
+        if col in df_cl.columns:
+            df_cl[col] = df_cl[col].astype(str)
+    job_config_cl = bigquery.LoadJobConfig(
+        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
+        clustering_fields=["ciudad", "segmento"],
+    )
+    client.load_table_from_dataframe(df_cl, table_clientes, job_config=job_config_cl).result()
     print(f"[OK] BigQuery: {table_atenciones} (partición fecha_atencion), {table_clientes}")
 
 
@@ -128,10 +142,10 @@ def cargar_bigquery_eventos_app() -> None:
     except ImportError:
         print("[SKIP] google-cloud-bigquery no disponible.")
         return
-    project_id = os.environ.get("BQ_PROJECT_ID") or os.environ.get("GCP_PROJECT_ID")
+    project_id = Variable.get("GCP_PROJECT_ID", default_var="data-solution-end-to-end-21")
     dataset_id = os.environ.get("BQ_DATASET_ID", "cala_analytics")
     if not project_id:
-        print("[SKIP] BQ_PROJECT_ID o GCP_PROJECT_ID no definido.")
+        print("[SKIP] Variable GCP_PROJECT_ID no definida.")
         return
     df = preparar_eventos_app()
     if df.empty:
@@ -149,6 +163,12 @@ def cargar_bigquery_eventos_app() -> None:
         bigquery.SchemaField("ip_origen", "STRING", mode="NULLABLE"),
         bigquery.SchemaField("latencia_ms", "FLOAT64", mode="NULLABLE"),
     ]
+    # Asegurar tipos STRING para coincidir con DDL (evitar que Pandas infiera int)
+    for col in ["event_id", "id_cliente", "event_name", "plataforma", "version_app", "ip_origen"]:
+        if col in df.columns:
+            df[col] = df[col].astype(str)
+    if "latencia_ms" in df.columns:
+        df["latencia_ms"] = pd.to_numeric(df["latencia_ms"], errors="coerce").astype("float64")
     job_config = bigquery.LoadJobConfig(
         schema=schema,
         write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
@@ -156,6 +176,7 @@ def cargar_bigquery_eventos_app() -> None:
             type_=bigquery.TimePartitioningType.DAY,
             field="fecha_evento",
         ),
+        clustering_fields=["event_name", "id_cliente"],
     )
     client.load_table_from_dataframe(df, table_id, job_config=job_config).result()
     print(f"[OK] BigQuery: {table_id} (partición fecha_evento, cluster event_name/id_cliente)")

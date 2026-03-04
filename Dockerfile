@@ -11,7 +11,7 @@ RUN chown airflow: /tmp/requirements.txt
 
 USER airflow
 
-RUN pip install --no-cache-dir -r /tmp/requirements.txt
+RUN pip install --no-cache-dir --default-timeout=1000 --retries 10 -r /tmp/requirements.txt
 
 USER root
 

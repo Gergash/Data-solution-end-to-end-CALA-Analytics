@@ -8,7 +8,7 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-from pipeline_common import procesar_datos_ia
+from utils.ia import procesar_datos_ia
 
 with DAG(
     dag_id="dag_2_preprocesamiento_ia",

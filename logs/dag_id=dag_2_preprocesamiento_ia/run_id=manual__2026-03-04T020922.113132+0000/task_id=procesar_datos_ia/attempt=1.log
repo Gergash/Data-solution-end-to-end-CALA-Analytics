@@ -1,0 +1,19 @@
+[2026-03-04T02:09:23.482+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T02:09:23.505+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_2_preprocesamiento_ia.procesar_datos_ia manual__2026-03-04T02:09:22.113132+00:00 [queued]>
+[2026-03-04T02:09:23.515+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_2_preprocesamiento_ia.procesar_datos_ia manual__2026-03-04T02:09:22.113132+00:00 [queued]>
+[2026-03-04T02:09:23.516+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T02:09:23.531+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): procesar_datos_ia> on 2026-03-04 02:09:22.113132+00:00
+[2026-03-04T02:09:23.539+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_2_preprocesamiento_ia', 'procesar_datos_ia', 'manual__2026-03-04T02:09:22.113132+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/dag_2_preprocesamiento_ia.py', '--cfg-path', '/tmp/tmpw6c6ub5_']
+[2026-03-04T02:09:23.543+0000] {standard_task_runner.py:105} INFO - Job 11: Subtask procesar_datos_ia
+[2026-03-04T02:09:23.544+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=220) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T02:09:23.545+0000] {standard_task_runner.py:72} INFO - Started process 222 to run task
+[2026-03-04T02:09:23.606+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_2_preprocesamiento_ia.procesar_datos_ia manual__2026-03-04T02:09:22.113132+00:00 [running]> on host b3e814f9c7b6
+[2026-03-04T02:09:23.712+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_2_preprocesamiento_ia' AIRFLOW_CTX_TASK_ID='procesar_datos_ia' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T02:09:22.113132+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T02:09:22.113132+00:00'
+[2026-03-04T02:09:23.713+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T02:09:27.669+0000] {logging_mixin.py:190} INFO - [OK] IA: train=9961, val=525, vocab_size=210
+[2026-03-04T02:09:27.671+0000] {python.py:240} INFO - Done. Returned value was: None
+[2026-03-04T02:09:27.688+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T02:09:27.689+0000] {taskinstance.py:352} INFO - Marking task as SUCCESS. dag_id=dag_2_preprocesamiento_ia, task_id=procesar_datos_ia, run_id=manual__2026-03-04T02:09:22.113132+00:00, execution_date=20260304T020922, start_date=20260304T020923, end_date=20260304T020927
+[2026-03-04T02:09:27.773+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-03-04T02:09:27.796+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T02:09:27.798+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

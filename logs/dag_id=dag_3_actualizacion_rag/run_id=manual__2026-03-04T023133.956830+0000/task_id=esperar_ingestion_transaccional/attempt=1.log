@@ -1,0 +1,116 @@
+[2026-03-04T02:31:35.987+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T02:31:36.011+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T02:31:33.956830+00:00 [queued]>
+[2026-03-04T02:31:36.022+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T02:31:33.956830+00:00 [queued]>
+[2026-03-04T02:31:36.023+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T02:31:36.037+0000] {taskinstance.py:2889} INFO - Executing <Task(ExternalTaskSensor): esperar_ingestion_transaccional> on 2026-03-04 02:31:33.956830+00:00
+[2026-03-04T02:31:36.045+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_3_actualizacion_rag', 'esperar_ingestion_transaccional', 'manual__2026-03-04T02:31:33.956830+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/dag_3_actualizacion_rag.py', '--cfg-path', '/tmp/tmpr9u82pol']
+[2026-03-04T02:31:36.048+0000] {standard_task_runner.py:105} INFO - Job 12: Subtask esperar_ingestion_transaccional
+[2026-03-04T02:31:36.049+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=1232) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T02:31:36.050+0000] {standard_task_runner.py:72} INFO - Started process 1234 to run task
+[2026-03-04T02:31:36.112+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T02:31:33.956830+00:00 [running]> on host b3e814f9c7b6
+[2026-03-04T02:31:36.214+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_3_actualizacion_rag' AIRFLOW_CTX_TASK_ID='esperar_ingestion_transaccional' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T02:31:33.956830+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T02:31:33.956830+00:00'
+[2026-03-04T02:31:36.216+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T02:31:36.230+0000] {baseoperator.py:421} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2026-03-04T02:31:36.231+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:31:36.236+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/session.py:97 DeprecationWarning: This method is deprecated and will be removed in future.
+[2026-03-04T02:32:06.481+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:32:41.255+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:33:13.559+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:33:46.313+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:34:18.980+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:34:51.679+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:35:24.283+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:35:56.770+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:36:29.452+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:37:02.144+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:37:34.715+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:38:07.262+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:38:39.925+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:39:12.421+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:39:45.023+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:40:17.550+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:40:50.315+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:41:22.937+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:41:55.679+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:42:28.219+0000] {external_task.py:258} INFO - Poking for tasks ['ejecutar_sql_kpi_recurrencia'] in dag dag_1_ingestion_transaccional on 2026-03-04T02:31:33.956830+00:00 ... 
+[2026-03-04T02:42:28.235+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/external_task.py", line 348, in execute
+    super().execute(context)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/base.py", line 323, in execute
+    raise AirflowSensorTimeout(message)
+airflow.exceptions.AirflowSensorTimeout: Sensor has timed out; run duration of 600.3217256950011 seconds exceeds the specified timeout of 600.0.
+[2026-03-04T02:42:28.250+0000] {taskinstance.py:1225} INFO - Immediate failure requested. Marking task as FAILED. dag_id=dag_3_actualizacion_rag, task_id=esperar_ingestion_transaccional, run_id=manual__2026-03-04T02:31:33.956830+00:00, execution_date=20260304T023133, start_date=20260304T023136, end_date=20260304T024228
+[2026-03-04T02:42:28.267+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T02:42:28.268+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 12 for task esperar_ingestion_transaccional (Sensor has timed out; run duration of 600.3217256950011 seconds exceeds the specified timeout of 600.0.; 1234)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/external_task.py", line 348, in execute
+    super().execute(context)
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/sensors/base.py", line 323, in execute
+    raise AirflowSensorTimeout(message)
+airflow.exceptions.AirflowSensorTimeout: Sensor has timed out; run duration of 600.3217256950011 seconds exceeds the specified timeout of 600.0.
+[2026-03-04T02:42:28.292+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-03-04T02:42:28.324+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T02:42:28.329+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

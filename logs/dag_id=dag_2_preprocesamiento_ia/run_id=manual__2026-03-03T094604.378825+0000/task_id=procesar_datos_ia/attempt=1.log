@@ -1,0 +1,143 @@
+[2026-03-03T09:46:05.338+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-03T09:46:05.362+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_2_preprocesamiento_ia.procesar_datos_ia manual__2026-03-03T09:46:04.378825+00:00 [queued]>
+[2026-03-03T09:46:05.373+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_2_preprocesamiento_ia.procesar_datos_ia manual__2026-03-03T09:46:04.378825+00:00 [queued]>
+[2026-03-03T09:46:05.375+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-03T09:46:05.393+0000] {taskinstance.py:2889} INFO - Executing <Task(PythonOperator): procesar_datos_ia> on 2026-03-03 09:46:04.378825+00:00
+[2026-03-03T09:46:05.402+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_2_preprocesamiento_ia', 'procesar_datos_ia', 'manual__2026-03-03T09:46:04.378825+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/dag_2_preprocesamiento_ia.py', '--cfg-path', '/tmp/tmpjj21e6pm']
+[2026-03-03T09:46:05.406+0000] {standard_task_runner.py:105} INFO - Job 8: Subtask procesar_datos_ia
+[2026-03-03T09:46:05.408+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=641) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-03T09:46:05.409+0000] {standard_task_runner.py:72} INFO - Started process 643 to run task
+[2026-03-03T09:46:05.475+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_2_preprocesamiento_ia.procesar_datos_ia manual__2026-03-03T09:46:04.378825+00:00 [running]> on host 23eb156e53fb
+[2026-03-03T09:46:05.581+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_2_preprocesamiento_ia' AIRFLOW_CTX_TASK_ID='procesar_datos_ia' AIRFLOW_CTX_EXECUTION_DATE='2026-03-03T09:46:04.378825+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-03T09:46:04.378825+00:00'
+[2026-03-03T09:46:05.583+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-03T09:46:07.693+0000] {taskinstance.py:3311} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
+    ctypes.CDLL(path)
+  File "/usr/local/lib/python3.12/ctypes/__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: /home/***/.local/lib/python3.12/site-packages/torchtext/lib/libtorchtext.so: undefined symbol: _ZN5torch6detail10class_baseC2ERKSsS3_SsRKSt9type_infoS6_
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/utils/ia.py", line 21, in procesar_datos_ia
+    from torchtext.data.utils import get_tokenizer
+  File "/home/airflow/.local/lib/python3.12/site-packages/torchtext/__init__.py", line 18, in <module>
+    from torchtext import _extension  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/torchtext/_extension.py", line 64, in <module>
+    _init_extension()
+  File "/home/airflow/.local/lib/python3.12/site-packages/torchtext/_extension.py", line 58, in _init_extension
+    _load_lib("libtorchtext")
+  File "/home/airflow/.local/lib/python3.12/site-packages/torchtext/_extension.py", line 50, in _load_lib
+    torch.ops.load_library(path)
+  File "/home/airflow/.local/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
+    raise OSError(f"Could not load this library: {path}") from e
+OSError: Could not load this library: /home/***/.local/lib/python3.12/site-packages/torchtext/lib/libtorchtext.so
+[2026-03-03T09:46:07.709+0000] {taskinstance.py:1225} INFO - Marking task as FAILED. dag_id=dag_2_preprocesamiento_ia, task_id=procesar_datos_ia, run_id=manual__2026-03-03T09:46:04.378825+00:00, execution_date=20260303T094604, start_date=20260303T094605, end_date=20260303T094607
+[2026-03-03T09:46:07.727+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-03T09:46:07.728+0000] {standard_task_runner.py:124} ERROR - Failed to execute job 8 for task procesar_datos_ia (Could not load this library: /home/***/.local/lib/python3.12/site-packages/torchtext/lib/libtorchtext.so; 643)
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/torch/_ops.py", line 1442, in load_library
+    ctypes.CDLL(path)
+  File "/usr/local/lib/python3.12/ctypes/__init__.py", line 379, in __init__
+    self._handle = _dlopen(self._name, mode)
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: /home/***/.local/lib/python3.12/site-packages/torchtext/lib/libtorchtext.so: undefined symbol: _ZN5torch6detail10class_baseC2ERKSsS3_SsRKSt9type_infoS6_
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/task/task_runner/standard_task_runner.py", line 117, in _start_by_fork
+    ret = args.func(args, dag=self.dag)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/cli_config.py", line 49, in command
+    return func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/cli.py", line 116, in wrapper
+    return f(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 483, in task_run
+    task_return_code = _run_task_by_selected_method(args, _dag, ti)
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 256, in _run_task_by_selected_method
+    return _run_raw_task(args, ti)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/cli/commands/task_command.py", line 341, in _run_raw_task
+    return ti._run_raw_task(
+           ^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/session.py", line 97, in wrapper
+    return func(*args, session=session, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3005, in _run_raw_task
+    return _run_raw_task(
+           ^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 273, in _run_raw_task
+    TaskInstance._execute_task_with_callbacks(
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3159, in _execute_task_with_callbacks
+    result = self._execute_task(context, task_orig)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 3183, in _execute_task
+    return _execute_task(self, context, task_orig)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 767, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/taskinstance.py", line 733, in _execute_callable
+    return ExecutionCallableRunner(
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/models/baseoperator.py", line 422, in wrapper
+    return func(self, *args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 238, in execute
+    return_value = self.execute_callable()
+                   ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/operators/python.py", line 256, in execute_callable
+    return runner.run(*self.op_args, **self.op_kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/airflow/utils/operator_helpers.py", line 252, in run
+    return self.func(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/opt/airflow/dags/utils/ia.py", line 21, in procesar_datos_ia
+    from torchtext.data.utils import get_tokenizer
+  File "/home/airflow/.local/lib/python3.12/site-packages/torchtext/__init__.py", line 18, in <module>
+    from torchtext import _extension  # noqa: F401
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/airflow/.local/lib/python3.12/site-packages/torchtext/_extension.py", line 64, in <module>
+    _init_extension()
+  File "/home/airflow/.local/lib/python3.12/site-packages/torchtext/_extension.py", line 58, in _init_extension
+    _load_lib("libtorchtext")
+  File "/home/airflow/.local/lib/python3.12/site-packages/torchtext/_extension.py", line 50, in _load_lib
+    torch.ops.load_library(path)
+  File "/home/airflow/.local/lib/python3.12/site-packages/torch/_ops.py", line 1444, in load_library
+    raise OSError(f"Could not load this library: {path}") from e
+OSError: Could not load this library: /home/***/.local/lib/python3.12/site-packages/torchtext/lib/libtorchtext.so
+[2026-03-03T09:46:07.791+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 1
+[2026-03-03T09:46:07.823+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-03T09:46:07.827+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

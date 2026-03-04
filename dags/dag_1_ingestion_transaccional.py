@@ -8,7 +8,7 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.python import PythonOperator
 
-from pipeline_common import (
+from utils.ingestion import (
     cargar_bigquery_atenciones_clientes,
     ejecutar_sql_kpi_recurrencia,
     limpiar_datos_transaccionales,

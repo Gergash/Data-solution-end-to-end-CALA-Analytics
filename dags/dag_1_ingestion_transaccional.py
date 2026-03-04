@@ -12,6 +12,7 @@ from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobO
 
 from utils.ingestion import (
     cargar_bigquery_atenciones_clientes,
+    cargar_bigquery_eventos_app,
     limpiar_datos_transaccionales,
 )
 
@@ -31,7 +32,7 @@ with DAG(
     catchup=False,
     tags=["bigquery", "ingestion", "kpis"],
     template_searchpath=TEMPLATE_SEARCHPATH,
-    default_params=DEFAULT_PARAMS,
+    params=DEFAULT_PARAMS,
 ) as dag:
     limpiar = PythonOperator(
         task_id="limpiar_y_estandarizar",
@@ -58,9 +59,23 @@ with DAG(
             }
         },
     )
+    crear_tabla_eventos_app = BigQueryInsertJobOperator(
+        task_id="crear_tabla_eventos_app",
+        project_id="{{ params.bq_project }}",
+        configuration={
+            "query": {
+                "query": "{% include 'ddl/create_table_eventos_app.sql' %}",
+                "useLegacySql": False,
+            }
+        },
+    )
     cargar_bq = PythonOperator(
         task_id="cargar_bigquery_atenciones_clientes",
         python_callable=cargar_bigquery_atenciones_clientes,
+    )
+    cargar_eventos = PythonOperator(
+        task_id="cargar_bigquery_eventos_app",
+        python_callable=cargar_bigquery_eventos_app,
     )
     # KPIs: vistas desde archivos SQL externos
     ejecutar_kpi_valor_segmento = BigQueryInsertJobOperator(
@@ -83,9 +98,26 @@ with DAG(
             }
         },
     )
+    ejecutar_kpi_rendimiento_plataforma = BigQueryInsertJobOperator(
+        task_id="ejecutar_kpi_rendimiento_plataforma",
+        project_id="{{ params.bq_project }}",
+        configuration={
+            "query": {
+                "query": "{% include 'queries/kpi_rendimiento_plataforma.sql' %}",
+                "useLegacySql": False,
+            }
+        },
+    )
 
-    # Orden lógico: Crear tablas → Cargar datos → Ejecutar consultas KPI
-    limpiar >> [crear_tabla_atenciones, crear_tabla_clientes] >> cargar_bq >> [
-        ejecutar_kpi_valor_segmento,
-        ejecutar_kpi_recurrencia,
-    ]
+    # 1. Limpieza a la creación de tablas (Lista 1)
+    limpiar >> [crear_tabla_atenciones, crear_tabla_clientes, crear_tabla_eventos_app]
+
+    # 2. Conectar CADA tabla a su proceso de carga correspondiente (Mapeo 1 a 1)
+    crear_tabla_atenciones >> cargar_bq
+    crear_tabla_clientes >> cargar_bq
+    crear_tabla_eventos_app >> cargar_eventos
+
+    # 3. Desde las cargas a los KPIs (Lista 2)
+    [cargar_bq, cargar_eventos] >> ejecutar_kpi_valor_segmento
+    [cargar_bq, cargar_eventos] >> ejecutar_kpi_recurrencia
+    [cargar_bq, cargar_eventos] >> ejecutar_kpi_rendimiento_plataforma

@@ -1,11 +1,12 @@
--- Vista KPI: clientes recurrentes (≥2 atenciones en ventana 30d). Sin SQL embebido en Python.
+-- Vista KPI: clientes recurrentes (≥2 atenciones en ventana 30d).
+-- Corrección: Uso de UNIX_DATE para que RANGE funcione (BigQuery exige tipo numérico en ORDER BY para RANGE).
 CREATE OR REPLACE VIEW `{{ params.bq_project }}.{{ params.bq_dataset }}.v_kpi_recurrencia_30d` AS
 WITH ventana AS (
   SELECT id_cliente, fecha_proceso,
     COUNT(*) OVER (
       PARTITION BY id_cliente
-      ORDER BY DATE(fecha_proceso)
-      RANGE BETWEEN INTERVAL 30 DAY PRECEDING AND CURRENT ROW
+      ORDER BY UNIX_DATE(DATE(fecha_proceso))
+      RANGE BETWEEN 30 PRECEDING AND CURRENT ROW
     ) AS atenciones_30d
   FROM `{{ params.bq_project }}.{{ params.bq_dataset }}.atenciones`
   WHERE fecha_proceso IS NOT NULL

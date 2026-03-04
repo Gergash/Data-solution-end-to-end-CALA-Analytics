@@ -5,7 +5,7 @@ import os
 
 import pandas as pd
 
-from utils import CLEANED_DIR, PATH_ATENCIONES, PATH_CLIENTES, limpiar_y_estandarizar
+from utils import CLEANED_DIR, PATH_ATENCIONES, PATH_CLIENTES, PATH_EVENTOS_APP, limpiar_y_estandarizar
 
 
 def limpiar_datos_transaccionales() -> None:
@@ -90,5 +90,74 @@ def cargar_bigquery_atenciones_clientes() -> None:
         df_cl, table_clientes, job_config=bigquery.LoadJobConfig(write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE)
     ).result()
     print(f"[OK] BigQuery: {table_atenciones} (partición fecha_atencion), {table_clientes}")
+
+
+def preparar_eventos_app() -> pd.DataFrame:
+    """
+    Lee eventos_app.json (posiblemente anidado) y devuelve un DataFrame alineado con el DDL eventos_app.
+    Aplana metadata (ej. metadata.ip -> ip_origen) y rellena columnas ausentes.
+    """
+    if not os.path.isfile(PATH_EVENTOS_APP):
+        return pd.DataFrame()
+    raw = pd.read_json(PATH_EVENTOS_APP)
+    if raw.empty:
+        return raw
+    # Aplanar columnas anidadas (ej. metadata.ip)
+    if "metadata" in raw.columns and raw["metadata"].notna().any() and isinstance(raw["metadata"].dropna().iloc[0], dict):
+        flat = pd.json_normalize(raw.to_dict(orient="records"))
+    else:
+        flat = raw.copy()
+    n = len(flat)
+    # Mapeo al esquema DDL: event_id, id_cliente, event_name, plataforma, fecha_evento, version_app, ip_origen, latencia_ms
+    df = pd.DataFrame()
+    df["event_id"] = flat["id_evento"].astype(str) if "id_evento" in flat.columns else [""] * n
+    df["id_cliente"] = flat["id_cliente"].astype(str) if "id_cliente" in flat.columns else [""] * n
+    df["event_name"] = flat["tipo_evento"].astype(str) if "tipo_evento" in flat.columns else flat.get("event_name", pd.Series([""] * n))
+    df["plataforma"] = flat["plataforma"].astype(str) if "plataforma" in flat.columns else [""] * n
+    df["fecha_evento"] = pd.to_datetime(flat["timestamp"], errors="coerce") if "timestamp" in flat.columns else pd.NaT
+    df["version_app"] = flat["version_app"].astype(str) if "version_app" in flat.columns else [""] * n
+    df["ip_origen"] = flat["metadata.ip"].astype(str) if "metadata.ip" in flat.columns else [""] * n
+    df["latencia_ms"] = pd.to_numeric(flat["latencia_ms"], errors="coerce").astype("float64") if "latencia_ms" in flat.columns else pd.Series([float("nan")] * n)
+    return df
+
+
+def cargar_bigquery_eventos_app() -> None:
+    """Carga eventos_app desde JSON (aplanado) a BigQuery. Tabla particionada por fecha_evento."""
+    try:
+        from google.cloud import bigquery
+    except ImportError:
+        print("[SKIP] google-cloud-bigquery no disponible.")
+        return
+    project_id = os.environ.get("BQ_PROJECT_ID") or os.environ.get("GCP_PROJECT_ID")
+    dataset_id = os.environ.get("BQ_DATASET_ID", "cala_analytics")
+    if not project_id:
+        print("[SKIP] BQ_PROJECT_ID o GCP_PROJECT_ID no definido.")
+        return
+    df = preparar_eventos_app()
+    if df.empty:
+        print("[SKIP] No hay datos en eventos_app.json o archivo no encontrado.")
+        return
+    client = bigquery.Client(project=project_id)
+    table_id = f"{project_id}.{dataset_id}.eventos_app"
+    schema = [
+        bigquery.SchemaField("event_id", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("id_cliente", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("event_name", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("plataforma", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("fecha_evento", "TIMESTAMP", mode="NULLABLE"),
+        bigquery.SchemaField("version_app", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("ip_origen", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("latencia_ms", "FLOAT64", mode="NULLABLE"),
+    ]
+    job_config = bigquery.LoadJobConfig(
+        schema=schema,
+        write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
+        time_partitioning=bigquery.TimePartitioning(
+            type_=bigquery.TimePartitioningType.DAY,
+            field="fecha_evento",
+        ),
+    )
+    client.load_table_from_dataframe(df, table_id, job_config=job_config).result()
+    print(f"[OK] BigQuery: {table_id} (partición fecha_evento, cluster event_name/id_cliente)")
 
 

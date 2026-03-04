@@ -14,6 +14,8 @@ import pandas as pd
 BASE_DATOS = os.environ.get("PIPELINE_DATOS_DIR", os.environ.get("AIRFLOW_HOME", "/opt/airflow"))
 PATH_ATENCIONES = os.path.join(BASE_DATOS, "atenciones.csv")
 PATH_CLIENTES = os.path.join(BASE_DATOS, "clientes.csv")
+# Metadata de la app: Dataset_Prueba_Tecnica_GCP_RAG/eventos_app.json
+PATH_EVENTOS_APP = os.path.join(BASE_DATOS, "eventos_app.json")
 PATH_KB = os.path.join(BASE_DATOS, "kb")
 # En Docker: túnel directo a la base de conocimientos en /opt/airflow/kb
 if os.path.isdir("/opt/airflow/kb"):
@@ -33,6 +35,7 @@ if not os.path.isfile(PATH_ATENCIONES):
         BASE_DATOS = _fallback
         PATH_ATENCIONES = os.path.join(BASE_DATOS, "atenciones.csv")
         PATH_CLIENTES = os.path.join(BASE_DATOS, "clientes.csv")
+        PATH_EVENTOS_APP = os.path.join(BASE_DATOS, "eventos_app.json")
         PATH_KB = os.path.join(BASE_DATOS, "kb")
 
 

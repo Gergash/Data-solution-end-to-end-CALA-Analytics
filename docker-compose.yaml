@@ -19,7 +19,7 @@ x-airflow-common:
     AIRFLOW__SCHEDULER__ENABLE_HEALTH_CHECK: 'true'
     _PIP_ADDITIONAL_REQUIREMENTS: ''
     # Credenciales Google Cloud (BigQuery, GCS, etc.)
-    GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-/opt/airflow/gcp-credentials/key.json}
+    GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-/opt/airflow/gcp-key.json}
     # Ruta de CSVs para pipeline IA (atenciones.csv, clientes.csv)
     PIPELINE_DATOS_DIR: /opt/airflow/Dataset_Prueba_Tecnica_GCP_RAG
     # Commit de razonamiento.json (DAG 3): opcional
@@ -29,6 +29,8 @@ x-airflow-common:
     - .:/opt/airflow
     - ./scripts_sql:/opt/airflow/scripts_sql
     - ./Dataset_Prueba_Tecnica_GCP_RAG/kb:/opt/airflow/kb
+    # Credenciales GCP: ruta del host mapeada a ruta fija en el contenedor (evita FileNotFoundError con rutas Windows)
+    - ./gcp-credentials/key.json:/opt/airflow/gcp-key.json
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     postgres:

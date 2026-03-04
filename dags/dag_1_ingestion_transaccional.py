@@ -32,7 +32,7 @@ with DAG(
     catchup=False,
     tags=["bigquery", "ingestion", "kpis"],
     template_searchpath=TEMPLATE_SEARCHPATH,
-    default_params=DEFAULT_PARAMS,
+    params=DEFAULT_PARAMS,
 ) as dag:
     limpiar = PythonOperator(
         task_id="limpiar_y_estandarizar",
@@ -109,9 +109,15 @@ with DAG(
         },
     )
 
-    # Orden lógico: Crear tablas → Cargar datos (atenciones+clientes + eventos_app) → Ejecutar consultas KPI
-    limpiar >> [crear_tabla_atenciones, crear_tabla_clientes, crear_tabla_eventos_app] >> [cargar_bq, cargar_eventos] >> [
-        ejecutar_kpi_valor_segmento,
-        ejecutar_kpi_recurrencia,
-        ejecutar_kpi_rendimiento_plataforma,
-    ]
+    # 1. Limpieza a la creación de tablas (Lista 1)
+    limpiar >> [crear_tabla_atenciones, crear_tabla_clientes, crear_tabla_eventos_app]
+
+    # 2. Conectar CADA tabla a su proceso de carga correspondiente (Mapeo 1 a 1)
+    crear_tabla_atenciones >> cargar_bq
+    crear_tabla_clientes >> cargar_bq
+    crear_tabla_eventos_app >> cargar_eventos
+
+    # 3. Desde las cargas a los KPIs (Lista 2)
+    [cargar_bq, cargar_eventos] >> ejecutar_kpi_valor_segmento
+    [cargar_bq, cargar_eventos] >> ejecutar_kpi_recurrencia
+    [cargar_bq, cargar_eventos] >> ejecutar_kpi_rendimiento_plataforma

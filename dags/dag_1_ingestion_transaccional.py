@@ -12,6 +12,7 @@ from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobO
 
 from utils.ingestion import (
     cargar_bigquery_atenciones_clientes,
+    cargar_bigquery_eventos_app,
     limpiar_datos_transaccionales,
 )
 
@@ -58,9 +59,23 @@ with DAG(
             }
         },
     )
+    crear_tabla_eventos_app = BigQueryInsertJobOperator(
+        task_id="crear_tabla_eventos_app",
+        project_id="{{ params.bq_project }}",
+        configuration={
+            "query": {
+                "query": "{% include 'ddl/create_table_eventos_app.sql' %}",
+                "useLegacySql": False,
+            }
+        },
+    )
     cargar_bq = PythonOperator(
         task_id="cargar_bigquery_atenciones_clientes",
         python_callable=cargar_bigquery_atenciones_clientes,
+    )
+    cargar_eventos = PythonOperator(
+        task_id="cargar_bigquery_eventos_app",
+        python_callable=cargar_bigquery_eventos_app,
     )
     # KPIs: vistas desde archivos SQL externos
     ejecutar_kpi_valor_segmento = BigQueryInsertJobOperator(
@@ -83,9 +98,20 @@ with DAG(
             }
         },
     )
+    ejecutar_kpi_rendimiento_plataforma = BigQueryInsertJobOperator(
+        task_id="ejecutar_kpi_rendimiento_plataforma",
+        project_id="{{ params.bq_project }}",
+        configuration={
+            "query": {
+                "query": "{% include 'queries/kpi_rendimiento_plataforma.sql' %}",
+                "useLegacySql": False,
+            }
+        },
+    )
 
-    # Orden lógico: Crear tablas → Cargar datos → Ejecutar consultas KPI
-    limpiar >> [crear_tabla_atenciones, crear_tabla_clientes] >> cargar_bq >> [
+    # Orden lógico: Crear tablas → Cargar datos (atenciones+clientes + eventos_app) → Ejecutar consultas KPI
+    limpiar >> [crear_tabla_atenciones, crear_tabla_clientes, crear_tabla_eventos_app] >> [cargar_bq, cargar_eventos] >> [
         ejecutar_kpi_valor_segmento,
         ejecutar_kpi_recurrencia,
+        ejecutar_kpi_rendimiento_plataforma,
     ]

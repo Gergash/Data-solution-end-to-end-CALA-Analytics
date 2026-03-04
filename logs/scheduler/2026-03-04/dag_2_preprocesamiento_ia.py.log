@@ -6111,3 +6111,115 @@
 [2026-03-04T20:56:06.203+0000] {logging_mixin.py:190} INFO - [2026-03-04T20:56:06.203+0000] {dag.py:3239} INFO - Sync 1 DAGs
 [2026-03-04T20:56:06.222+0000] {logging_mixin.py:190} INFO - [2026-03-04T20:56:06.221+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
 [2026-03-04T20:56:06.248+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.148 seconds
+[2026-03-04T21:33:09.025+0000] {processor.py:186} INFO - Started process (PID=186) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:33:09.026+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:33:09.028+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:33:09.028+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:33:09.072+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:33:09.097+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:33:09.097+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:33:09.114+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:33:09.113+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:33:09.137+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.117 seconds
+[2026-03-04T21:33:42.261+0000] {processor.py:186} INFO - Started process (PID=206) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:33:42.262+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:33:42.264+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:33:42.263+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:33:42.311+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:33:42.336+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:33:42.335+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:33:42.546+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:33:42.545+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:33:42.571+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.316 seconds
+[2026-03-04T21:34:15.264+0000] {processor.py:186} INFO - Started process (PID=262) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:34:15.265+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:34:15.267+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:34:15.266+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:34:15.315+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:34:15.342+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:34:15.342+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:34:15.357+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:34:15.357+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:34:15.380+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.121 seconds
+[2026-03-04T21:34:48.305+0000] {processor.py:186} INFO - Started process (PID=282) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:34:48.306+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:34:48.308+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:34:48.308+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:34:48.360+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:34:48.387+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:34:48.387+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:34:48.404+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:34:48.404+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:34:48.426+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.126 seconds
+[2026-03-04T21:35:22.433+0000] {processor.py:186} INFO - Started process (PID=302) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:35:22.435+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:35:22.439+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:35:22.438+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:35:22.503+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:35:22.536+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:35:22.535+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:35:22.554+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:35:22.554+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:35:22.585+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.158 seconds
+[2026-03-04T21:35:55.611+0000] {processor.py:186} INFO - Started process (PID=322) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:35:55.612+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:35:55.614+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:35:55.614+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:35:55.668+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:35:55.694+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:35:55.693+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:35:55.710+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:35:55.710+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:35:55.735+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.128 seconds
+[2026-03-04T21:36:28.817+0000] {processor.py:186} INFO - Started process (PID=342) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:36:28.818+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:36:28.822+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:36:28.822+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:36:28.901+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:36:28.929+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:36:28.928+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:36:29.083+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:36:29.083+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:36:29.110+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.299 seconds
+[2026-03-04T21:37:02.100+0000] {processor.py:186} INFO - Started process (PID=362) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:37:02.101+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:37:02.104+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:37:02.104+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:37:02.160+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:37:02.188+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:37:02.187+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:37:02.366+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:37:02.366+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:37:02.395+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.301 seconds
+[2026-03-04T21:37:35.141+0000] {processor.py:186} INFO - Started process (PID=382) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:37:35.142+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:37:35.144+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:37:35.144+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:37:35.190+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:37:35.217+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:37:35.217+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:37:35.232+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:37:35.231+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:37:35.254+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.118 seconds
+[2026-03-04T21:38:08.316+0000] {processor.py:186} INFO - Started process (PID=402) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:38:08.317+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:38:08.320+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:38:08.320+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:38:08.368+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:38:08.396+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:38:08.395+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:38:08.412+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:38:08.411+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:38:08.434+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.122 seconds
+[2026-03-04T21:38:42.289+0000] {processor.py:186} INFO - Started process (PID=422) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:38:42.290+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:38:42.292+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:38:42.292+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:38:42.338+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:38:42.363+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:38:42.363+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:38:42.379+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:38:42.379+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:38:42.404+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.121 seconds
+[2026-03-04T21:39:15.432+0000] {processor.py:186} INFO - Started process (PID=442) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:39:15.433+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:39:15.435+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:39:15.435+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:39:15.483+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:39:15.507+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:39:15.507+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:39:15.688+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:39:15.688+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:39:15.716+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.289 seconds
+[2026-03-04T21:39:48.611+0000] {processor.py:186} INFO - Started process (PID=462) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:39:48.612+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:39:48.614+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:39:48.614+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:39:48.657+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:39:48.682+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:39:48.681+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:39:48.837+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:39:48.837+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:39:48.859+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.253 seconds
+[2026-03-04T21:40:21.609+0000] {processor.py:186} INFO - Started process (PID=482) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:40:21.611+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:40:21.613+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:40:21.613+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:40:21.664+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:40:21.685+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:40:21.685+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:40:21.702+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:40:21.702+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:40:21.723+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.118 seconds
+[2026-03-04T21:40:55.562+0000] {processor.py:186} INFO - Started process (PID=502) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:40:55.563+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:40:55.565+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:40:55.565+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:40:55.614+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:40:55.639+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:40:55.639+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:40:55.654+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:40:55.653+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:40:55.676+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.119 seconds
+[2026-03-04T21:41:28.535+0000] {processor.py:186} INFO - Started process (PID=522) to work on /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:41:28.536+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/dag_2_preprocesamiento_ia.py for tasks to queue
+[2026-03-04T21:41:28.538+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:41:28.538+0000] {dagbag.py:588} INFO - Filling up the DagBag from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:41:28.588+0000] {processor.py:925} INFO - DAG(s) 'dag_2_preprocesamiento_ia' retrieved from /opt/airflow/dags/dag_2_preprocesamiento_ia.py
+[2026-03-04T21:41:28.613+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:41:28.612+0000] {dag.py:3239} INFO - Sync 1 DAGs
+[2026-03-04T21:41:28.630+0000] {logging_mixin.py:190} INFO - [2026-03-04T21:41:28.630+0000] {dag.py:4180} INFO - Setting next_dagrun for dag_2_preprocesamiento_ia to None, run_after=None
+[2026-03-04T21:41:28.650+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/dag_2_preprocesamiento_ia.py took 0.120 seconds

@@ -25,9 +25,16 @@
         </div>
     </div>
     <script type="text/javascript">
-        var apiBase = (window.location.origin && window.location.origin.startsWith('http'))
-            ? window.location.origin
-            : 'http://localhost:8000';
+        // GitHub Pages: archivos en la misma carpeta que index.html (raíz). Siempre .json y cache-buster.
+        // Local/API: endpoints /metrics y /razonamiento.
+        var isGitHubPages = typeof window !== 'undefined' && window.location.hostname.indexOf('github.io') !== -1;
+        var apiOrigin = (window.location.origin && window.location.origin.startsWith('http')) ? window.location.origin : 'http://localhost:8000';
+        function urlMetrics() {
+            return isGitHubPages ? './metrics.json?t=' + new Date().getTime() : apiOrigin + '/metrics';
+        }
+        function urlRazonamiento() {
+            return isGitHubPages ? './razonamiento.json?t=' + new Date().getTime() : apiOrigin + '/razonamiento';
+        }
 
         // ----- Gauge (izquierda): 0-300 verde, 300-800 amarillo, 800+ rojo -----
         var gaugeDom = document.getElementById('gauge');
@@ -82,7 +89,7 @@
         }
 
         setGaugeOption(0);
-        fetch(apiBase + '/metrics')
+        fetch(urlMetrics())
             .then(function (res) { return res.json(); })
             .then(function (data) {
                 setGaugeOption(data.last_latency_ms || 0);
@@ -129,7 +136,7 @@
         };
 
         myChart.showLoading();
-        fetch(apiBase + '/razonamiento')
+        fetch(urlRazonamiento())
             .then(function (res) { return res.json(); })
             .then(function (graphData) {
                 myChart.hideLoading();

@@ -4,8 +4,11 @@ google-cloud-bigquery
 db-dtypes
 pandas
 numpy
-torch
-torchtext
+torch==2.2.2
+torchtext==0.17.2
 # RAG: embeddings y búsqueda vectorial
 sentence-transformers
 faiss-cpu
+# API
+fastapi
+uvicorn[standard]

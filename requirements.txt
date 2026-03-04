@@ -11,4 +11,6 @@ transformers==4.40.0
 sentence-transformers==3.0.0
 # API
 fastapi
-uvicorn[standard]   
+uvicorn[standard]
+# Commit automático del grafo de razonamiento (DAG 3)
+PyGithub   

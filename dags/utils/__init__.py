@@ -23,6 +23,8 @@ CLEANED_DIR = os.path.join(AIRFLOW_HOME, "logs", "cleaned")
 ARTEFACTOS_DIR = os.path.join(AIRFLOW_HOME, "logs", "pipeline_ia_artefactos")
 KB_CHUNKS_PATH = os.path.join(AIRFLOW_HOME, "logs", "kb_chunks.json")
 EMBEDDINGS_DIR = os.path.join(AIRFLOW_HOME, "logs", "embeddings")
+RAZONAMIENTO_JSON_PATH = os.path.join(AIRFLOW_HOME, "logs", "razonamiento.json")
+METRICS_JSON_PATH = os.path.join(AIRFLOW_HOME, "logs", "metrics.json")
 
 # Inicialización con fallback
 if not os.path.isfile(PATH_ATENCIONES):

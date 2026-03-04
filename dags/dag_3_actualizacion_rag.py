@@ -11,6 +11,7 @@ from airflow.operators.python import PythonOperator
 from airflow.sensors.external_task import ExternalTaskSensor
 
 from utils.rag import chunking_kb, refresh_embeddings
+from utils.github_commit import commit_razonamiento_json
 
 
 def elegir_ejecucion_reciente(logical_date, **kwargs):
@@ -41,4 +42,8 @@ with DAG(
         task_id="refresh_embeddings",
         python_callable=refresh_embeddings,
     )
-    esperar_ingestion >> chunking >> embeddings
+    commit_razonamiento = PythonOperator(
+        task_id="commit_razonamiento_json",
+        python_callable=commit_razonamiento_json,
+    )
+    esperar_ingestion >> chunking >> embeddings >> commit_razonamiento

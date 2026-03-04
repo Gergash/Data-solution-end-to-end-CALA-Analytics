@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Dashboard RAG - Razonamiento y Eficiencia</title>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    <style>
+        body { margin: 0; font-family: sans-serif; }
+        .dashboard { display: flex; flex-wrap: wrap; min-height: 100vh; }
+        .panel { box-sizing: border-box; padding: 12px; }
+        .panel-gauge { flex: 0 0 320px; min-height: 380px; }
+        .panel-graph { flex: 1 1 400px; min-height: 500px; }
+        h2 { margin: 0 0 8px 0; font-size: 1.1em; color: #333; }
+    </style>
+</head>
+<body>
+    <div class="dashboard">
+        <div class="panel panel-gauge">
+            <h2>Latencia API (última petición)</h2>
+            <div id="gauge" style="width: 100%; height: 320px;"></div>
+        </div>
+        <div class="panel panel-graph">
+            <h2>Grafo de Razonamiento IA</h2>
+            <div id="main" style="width: 100%; height: 500px;"></div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var apiBase = (window.location.origin && window.location.origin.startsWith('http'))
+            ? window.location.origin
+            : 'http://localhost:8000';
+
+        // ----- Gauge (izquierda): 0-300 verde, 300-800 amarillo, 800+ rojo -----
+        var gaugeDom = document.getElementById('gauge');
+        var gaugeChart = echarts.init(gaugeDom);
+        var gaugeMax = 2000;
+
+        function setGaugeOption(valueMs) {
+            var value = Math.min(Math.max(0, valueMs), gaugeMax);
+            gaugeChart.setOption({
+                series: [{
+                    type: 'gauge',
+                    min: 0,
+                    max: gaugeMax,
+                    progress: { show: true, width: 18 },
+                    axisLine: {
+                        lineStyle: {
+                            width: 18,
+                            color: [
+                                [0.15, '#22c55e'],
+                                [0.4, '#eab308'],
+                                [1, '#ef4444']
+                            ]
+                        }
+                    },
+                    axisTick: { show: false },
+                    splitLine: { show: false },
+                    axisLabel: {
+                        distance: 25,
+                        color: '#999',
+                        fontSize: 12,
+                        formatter: function (v) { return v + ' ms'; }
+                    },
+                    anchor: { show: true, showAbove: true, size: 20, itemStyle: { borderWidth: 8 } },
+                    title: {
+                        offsetCenter: [0, '85%'],
+                        fontSize: 12,
+                        formatter: function () {
+                            if (value <= 300) return 'Excelente';
+                            if (value <= 800) return 'Aceptable';
+                            return 'Crítico';
+                        }
+                    },
+                    detail: {
+                        valueAnimation: true,
+                        fontSize: 36,
+                        offsetCenter: [0, '55%'],
+                        formatter: '{value} ms'
+                    },
+                    data: [{ value: Math.round(value * 10) / 10 }]
+                }]
+            }, true);
+        }
+
+        setGaugeOption(0);
+        fetch(apiBase + '/metrics')
+            .then(function (res) { return res.json(); })
+            .then(function (data) {
+                setGaugeOption(data.last_latency_ms || 0);
+            })
+            .catch(function () { setGaugeOption(0); });
+
+        // ----- Grafo (derecha) -----
+        var chartDom = document.getElementById('main');
+        var myChart = echarts.init(chartDom);
+
+        function setGraphOption(graphData) {
+            graphData.nodes.forEach(function (node) { node.label = { show: true }; });
+            myChart.setOption({
+                title: {
+                    text: 'Pregunta → Documentos citados',
+                    subtext: 'Actualizado en cada /ask',
+                    top: 'top',
+                    left: 'center'
+                },
+                tooltip: {},
+                legend: [{ data: (graphData.categories || []).map(function (a) { return a.name; }) }],
+                animationDuration: 1500,
+                animationEasingUpdate: 'quinticInOut',
+                series: [{
+                    name: 'Razonamiento',
+                    type: 'graph',
+                    layout: 'force',
+                    data: graphData.nodes,
+                    links: graphData.links || [],
+                    categories: graphData.categories || [{ name: 'Pregunta' }, { name: 'Documento' }],
+                    roam: true,
+                    label: { position: 'right', formatter: '{b}' },
+                    force: { repulsion: 1000, edgeLength: 150 },
+                    lineStyle: { color: 'source', curveness: 0.3 },
+                    emphasis: { focus: 'adjacency', lineStyle: { width: 10 } }
+                }]
+            }, true);
+        }
+
+        var emptyGraph = {
+            nodes: [{ id: 'query_1', name: 'Sin consultas aún', symbolSize: 50, category: 0 }],
+            links: [],
+            categories: [{ name: 'Pregunta' }, { name: 'Documento' }]
+        };
+
+        myChart.showLoading();
+        fetch(apiBase + '/razonamiento')
+            .then(function (res) { return res.json(); })
+            .then(function (graphData) {
+                myChart.hideLoading();
+                setGraphOption((graphData.nodes && graphData.nodes.length) ? graphData : emptyGraph);
+            })
+            .catch(function () {
+                myChart.hideLoading();
+                setGraphOption(emptyGraph);
+            });
+    </script>
+</body>
+</html>

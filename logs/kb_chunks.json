@@ -1,0 +1,27 @@
+[
+  {
+    "archivo": "arquitectura_actual.md",
+    "fragmento": 1,
+    "texto": "# Arquitectura\nEl sistema utiliza BigQuery y Airflow."
+  },
+  {
+    "archivo": "definiciones.md",
+    "fragmento": 1,
+    "texto": "# Definiciones\nUn evento LOGIN representa autenticación exitosa."
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 1,
+    "texto": "# FAQ\n¿Cómo validar una atención? Revisando estado y valor facturado."
+  },
+  {
+    "archivo": "glosario_eventos.md",
+    "fragmento": 1,
+    "texto": "# Glosario\nERROR indica fallo del sistema."
+  },
+  {
+    "archivo": "politicas.md",
+    "fragmento": 1,
+    "texto": "# Políticas\nLas atenciones deben estar asociadas a un cliente válido."
+  }
+]

@@ -15,6 +15,7 @@ from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import FileResponse
 from pydantic import BaseModel, Field
 
 # Rutas relativas a la raíz que Docker ve (/app): así el código encuentra los archivos en cualquier contenedor
@@ -24,6 +25,8 @@ EMBEDDINGS_DIR = LOGS_DIR / "embeddings"  # Carpeta donde el DAG 3 escribe faiss
 FAISS_INDEX_PATH = EMBEDDINGS_DIR / "faiss.index"
 METADATA_PATH = EMBEDDINGS_DIR / "metadata.json"
 AUDIT_LOG_PATH = LOGS_DIR / "ask_audit.log"
+RAZONAMIENTO_JSON_PATH = LOGS_DIR / "razonamiento.json"
+METRICS_JSON_PATH = LOGS_DIR / "metrics.json"
 
 # Artefactos RAG (startup o lazy load en la primera llamada a /ask)
 faiss_index = None
@@ -92,6 +95,33 @@ def _write_ask_audit(pregunta: str, citas: list[dict], respuesta_preview: str) -
         pass  # No fallar la petición por un error de log
 
 
+def _write_razonamiento_grafo(pregunta: str, citas: list[dict]) -> None:
+    """Actualiza razonamiento.json con nodos (pregunta + documentos) y enlaces para el grafo ECharts del dashboard."""
+    try:
+        LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        query_id = "query_1"
+        query_label = (pregunta[:40] + "…") if len(pregunta) > 40 else pregunta
+        nodes = [
+            {"id": query_id, "name": query_label, "symbolSize": 50, "category": 0},
+        ]
+        seen = set()
+        for c in citas:
+            arch = c.get("archivo", "")
+            if arch and arch not in seen:
+                seen.add(arch)
+                nodes.append({"id": arch, "name": arch, "symbolSize": 30, "category": 1})
+        links = [{"source": query_id, "target": c.get("archivo", "")} for c in citas if c.get("archivo")]
+        graph = {
+            "nodes": nodes,
+            "links": links,
+            "categories": [{"name": "Pregunta"}, {"name": "Documento"}],
+        }
+        with open(RAZONAMIENTO_JSON_PATH, "w", encoding="utf-8") as f:
+            json.dump(graph, f, ensure_ascii=False, indent=2)
+    except Exception:
+        pass
+
+
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """
@@ -123,6 +153,20 @@ app.add_middleware(
 )
 
 
+def _write_metrics(latency_ms: float) -> None:
+    """Persiste la última latencia en metrics.json para el gauge del dashboard."""
+    try:
+        LOGS_DIR.mkdir(parents=True, exist_ok=True)
+        payload = {
+            "last_latency_ms": round(latency_ms, 2),
+            "updated_at": time.strftime("%Y-%m-%dT%H:%M:%SZ", time.gmtime()),
+        }
+        with open(METRICS_JSON_PATH, "w", encoding="utf-8") as f:
+            json.dump(payload, f, indent=2)
+    except Exception:
+        pass
+
+
 # ----- Middleware de latencia -----
 @app.middleware("http")
 async def measure_latency(request, call_next):
@@ -130,6 +174,7 @@ async def measure_latency(request, call_next):
     response = await call_next(request)
     duration_ms = (time.perf_counter() - start) * 1000
     response.headers["X-Response-Time-Ms"] = f"{duration_ms:.2f}"
+    _write_metrics(duration_ms)
     return response
 
 
@@ -183,11 +228,14 @@ async def ask(request: AskRequest):
         respuesta_texto = "No encontré información precisa en los manuales para tu pregunta."
         citas_model = []
         _write_ask_audit(request.pregunta, [], respuesta_texto)
+        _write_razonamiento_grafo(request.pregunta, [])
         return AskResponse(respuesta=respuesta_texto, citas=citas_model)
 
     respuesta_texto = "\n\n".join(c["texto"] for c in selected)
     citas_model = [Cita(archivo=c["archivo"], fragmento=c["fragmento"]) for c in selected]
-    _write_ask_audit(request.pregunta, [{"archivo": c["archivo"], "fragmento": c["fragmento"]} for c in selected], respuesta_texto)
+    citas_dict = [{"archivo": c["archivo"], "fragmento": c["fragmento"]} for c in selected]
+    _write_ask_audit(request.pregunta, citas_dict, respuesta_texto)
+    _write_razonamiento_grafo(request.pregunta, citas_dict)
     return AskResponse(respuesta=respuesta_texto, citas=citas_model)
 
 
@@ -233,6 +281,33 @@ async def kpis():
     _kpis_cache = payload
     _kpis_cache_time = now
     return payload
+
+
+@app.get("/razonamiento")
+async def razonamiento():
+    """Devuelve el grafo (nodos, links, categories) para el dashboard ECharts. Se actualiza en cada POST /ask."""
+    if not RAZONAMIENTO_JSON_PATH.exists():
+        return {"nodes": [], "links": [], "categories": [{"name": "Pregunta"}, {"name": "Documento"}]}
+    with open(RAZONAMIENTO_JSON_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+@app.get("/metrics")
+async def metrics():
+    """Devuelve la última latencia (ms) para el gauge del dashboard. Se actualiza en cada petición a la API."""
+    if not METRICS_JSON_PATH.exists():
+        return {"last_latency_ms": 0, "updated_at": None}
+    with open(METRICS_JSON_PATH, "r", encoding="utf-8") as f:
+        return json.load(f)
+
+
+@app.get("/dashboard", response_class=FileResponse)
+async def dashboard():
+    """Sirve el dashboard de grafo de razonamiento (ECharts)."""
+    index_path = PROJECT_ROOT / "index.html"
+    if not index_path.exists():
+        raise HTTPException(status_code=404, detail="index.html no encontrado.")
+    return FileResponse(index_path)
 
 
 @app.get("/health")

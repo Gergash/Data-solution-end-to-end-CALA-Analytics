@@ -21,16 +21,10 @@ x-airflow-common:
     # Credenciales Google Cloud (BigQuery, GCS, etc.)
     GOOGLE_APPLICATION_CREDENTIALS: ${GOOGLE_APPLICATION_CREDENTIALS:-/opt/airflow/gcp-credentials/key.json}
     # Ruta de CSVs para pipeline IA (atenciones.csv, clientes.csv)
-    PIPELINE_DATOS_DIR: /opt/airflow/datos
+    PIPELINE_DATOS_DIR: /opt/airflow/Dataset_Prueba_Tecnica_GCP_RAG
   volumes:
-    - ${AIRFLOW_PROJ_DIR:-.}/dags:/opt/airflow/dags
-    - ${AIRFLOW_PROJ_DIR:-.}/logs:/opt/airflow/logs
-    - ${AIRFLOW_PROJ_DIR:-.}/config:/opt/airflow/config
-    - ${AIRFLOW_PROJ_DIR:-.}/plugins:/opt/airflow/plugins
-    # Montar carpeta de credenciales GCP (coloca aquí tu key JSON o usa Application Default)
-    - ${AIRFLOW_PROJ_DIR:-.}/gcp-credentials:/opt/airflow/gcp-credentials:ro
-    # Dataset para pipeline_entrenamiento_ia (atenciones.csv, clientes.csv)
-    - ${AIRFLOW_PROJ_DIR:-.}/Dataset_Prueba_Tecnica_GCP_RAG:/opt/airflow/datos:ro
+    - .:/opt/airflow
+    - ./Dataset_Prueba_Tecnica_GCP_RAG/kb:/opt/airflow/kb
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:
     postgres:
@@ -120,6 +114,26 @@ services:
     depends_on:
       airflow-init:
         condition: service_completed_successfully
+
+  api:
+    image: ${AIRFLOW_IMAGE_NAME:-cala-airflow:latest}
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: cala-api
+    entrypoint: []
+    working_dir: /app
+    command: ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app  # Mapeo total: todo lo que ves en tu carpeta, lo ve la API
+    environment:
+      GOOGLE_APPLICATION_CREDENTIALS: /app/gcp-credentials/key.json
+      BQ_PROJECT_ID: ${BQ_PROJECT_ID:-}
+      BQ_DATASET_ID: ${BQ_DATASET_ID:-cala_analytics}
+      GCP_PROJECT_ID: ${GCP_PROJECT_ID:-}
+    restart: unless-stopped
 
 volumes:
   postgres-db-volume:

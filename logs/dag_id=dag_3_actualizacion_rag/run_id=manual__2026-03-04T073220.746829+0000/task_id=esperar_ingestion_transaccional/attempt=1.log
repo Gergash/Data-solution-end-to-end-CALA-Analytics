@@ -1,0 +1,100 @@
+[2026-03-04T07:32:22.129+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T07:32:22.154+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:32:22.165+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:32:22.166+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T07:32:22.182+0000] {taskinstance.py:2889} INFO - Executing <Task(ExternalTaskSensor): esperar_ingestion_transaccional> on 2026-03-04 07:32:20.746829+00:00
+[2026-03-04T07:32:22.191+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_3_actualizacion_rag', 'esperar_ingestion_transaccional', 'manual__2026-03-04T07:32:20.746829+00:00', '--job-id', '32', '--raw', '--subdir', 'DAGS_FOLDER/dag_3_actualizacion_rag.py', '--cfg-path', '/tmp/tmp013o0jic']
+[2026-03-04T07:32:22.195+0000] {standard_task_runner.py:105} INFO - Job 32: Subtask esperar_ingestion_transaccional
+[2026-03-04T07:32:22.195+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=240) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T07:32:22.196+0000] {standard_task_runner.py:72} INFO - Started process 242 to run task
+[2026-03-04T07:32:22.264+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [running]> on host cd33c17cbc6c
+[2026-03-04T07:32:22.373+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_3_actualizacion_rag' AIRFLOW_CTX_TASK_ID='esperar_ingestion_transaccional' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T07:32:20.746829+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T07:32:20.746829+00:00'
+[2026-03-04T07:32:22.374+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T07:32:22.391+0000] {baseoperator.py:421} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2026-03-04T07:32:22.407+0000] {external_task.py:274} INFO - Poking for DAG 'dag_1_ingestion_transaccional' on 2026-03-04T07:32:20.746829+00:00 ... 
+[2026-03-04T07:32:22.411+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/session.py:97 DeprecationWarning: This method is deprecated and will be removed in future.
+[2026-03-04T07:32:22.451+0000] {taskinstance.py:309} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2026-03-04T07:32:22.452+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T07:32:22.491+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-03-04T07:32:22.521+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T07:32:22.523+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2026-03-04T07:33:23.189+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T07:33:23.213+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:33:23.222+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:33:23.223+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T07:33:23.237+0000] {taskinstance.py:2889} INFO - Executing <Task(ExternalTaskSensor): esperar_ingestion_transaccional> on 2026-03-04 07:32:20.746829+00:00
+[2026-03-04T07:33:23.246+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_3_actualizacion_rag', 'esperar_ingestion_transaccional', 'manual__2026-03-04T07:32:20.746829+00:00', '--job-id', '34', '--raw', '--subdir', 'DAGS_FOLDER/dag_3_actualizacion_rag.py', '--cfg-path', '/tmp/tmparfqzl52']
+[2026-03-04T07:33:23.249+0000] {standard_task_runner.py:105} INFO - Job 34: Subtask esperar_ingestion_transaccional
+[2026-03-04T07:33:23.249+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=296) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T07:33:23.250+0000] {standard_task_runner.py:72} INFO - Started process 298 to run task
+[2026-03-04T07:33:23.315+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [running]> on host cd33c17cbc6c
+[2026-03-04T07:33:23.414+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_3_actualizacion_rag' AIRFLOW_CTX_TASK_ID='esperar_ingestion_transaccional' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T07:32:20.746829+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T07:32:20.746829+00:00'
+[2026-03-04T07:33:23.416+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T07:33:23.428+0000] {baseoperator.py:421} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2026-03-04T07:33:23.440+0000] {external_task.py:274} INFO - Poking for DAG 'dag_1_ingestion_transaccional' on 2026-03-04T07:32:20.746829+00:00 ... 
+[2026-03-04T07:33:23.444+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/session.py:97 DeprecationWarning: This method is deprecated and will be removed in future.
+[2026-03-04T07:33:23.483+0000] {taskinstance.py:309} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2026-03-04T07:33:23.484+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T07:33:23.506+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-03-04T07:33:23.537+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T07:33:23.540+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2026-03-04T07:34:25.022+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T07:34:25.060+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:34:25.077+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:34:25.079+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T07:34:25.099+0000] {taskinstance.py:2889} INFO - Executing <Task(ExternalTaskSensor): esperar_ingestion_transaccional> on 2026-03-04 07:32:20.746829+00:00
+[2026-03-04T07:34:25.124+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=352) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T07:34:25.117+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_3_actualizacion_rag', 'esperar_ingestion_transaccional', 'manual__2026-03-04T07:32:20.746829+00:00', '--job-id', '36', '--raw', '--subdir', 'DAGS_FOLDER/dag_3_actualizacion_rag.py', '--cfg-path', '/tmp/tmpdy2khg1q']
+[2026-03-04T07:34:25.128+0000] {standard_task_runner.py:72} INFO - Started process 354 to run task
+[2026-03-04T07:34:25.128+0000] {standard_task_runner.py:105} INFO - Job 36: Subtask esperar_ingestion_transaccional
+[2026-03-04T07:34:25.233+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [running]> on host cd33c17cbc6c
+[2026-03-04T07:34:25.381+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_3_actualizacion_rag' AIRFLOW_CTX_TASK_ID='esperar_ingestion_transaccional' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T07:32:20.746829+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T07:32:20.746829+00:00'
+[2026-03-04T07:34:25.384+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T07:34:25.402+0000] {baseoperator.py:421} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2026-03-04T07:34:25.419+0000] {external_task.py:274} INFO - Poking for DAG 'dag_1_ingestion_transaccional' on 2026-03-04T07:32:20.746829+00:00 ... 
+[2026-03-04T07:34:25.425+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/session.py:97 DeprecationWarning: This method is deprecated and will be removed in future.
+[2026-03-04T07:34:25.480+0000] {taskinstance.py:309} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2026-03-04T07:34:25.481+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T07:34:25.506+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-03-04T07:34:25.547+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T07:34:25.550+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2026-03-04T07:35:26.118+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T07:35:26.142+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:35:26.152+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:35:26.153+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T07:35:26.166+0000] {taskinstance.py:2889} INFO - Executing <Task(ExternalTaskSensor): esperar_ingestion_transaccional> on 2026-03-04 07:32:20.746829+00:00
+[2026-03-04T07:35:26.175+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_3_actualizacion_rag', 'esperar_ingestion_transaccional', 'manual__2026-03-04T07:32:20.746829+00:00', '--job-id', '38', '--raw', '--subdir', 'DAGS_FOLDER/dag_3_actualizacion_rag.py', '--cfg-path', '/tmp/tmp349d13_q']
+[2026-03-04T07:35:26.176+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=408) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T07:35:26.177+0000] {standard_task_runner.py:105} INFO - Job 38: Subtask esperar_ingestion_transaccional
+[2026-03-04T07:35:26.177+0000] {standard_task_runner.py:72} INFO - Started process 410 to run task
+[2026-03-04T07:35:26.241+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [running]> on host cd33c17cbc6c
+[2026-03-04T07:35:26.335+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_3_actualizacion_rag' AIRFLOW_CTX_TASK_ID='esperar_ingestion_transaccional' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T07:32:20.746829+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T07:32:20.746829+00:00'
+[2026-03-04T07:35:26.337+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T07:35:26.350+0000] {baseoperator.py:421} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2026-03-04T07:35:26.362+0000] {external_task.py:274} INFO - Poking for DAG 'dag_1_ingestion_transaccional' on 2026-03-04T07:32:20.746829+00:00 ... 
+[2026-03-04T07:35:26.367+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/session.py:97 DeprecationWarning: This method is deprecated and will be removed in future.
+[2026-03-04T07:35:26.403+0000] {taskinstance.py:309} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2026-03-04T07:35:26.404+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T07:35:26.432+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-03-04T07:35:26.460+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T07:35:26.463+0000] {local_task_job_runner.py:245} INFO - ::endgroup::
+[2026-03-04T07:36:30.623+0000] {local_task_job_runner.py:123} INFO - ::group::Pre task execution logs
+[2026-03-04T07:36:30.648+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:36:30.656+0000] {taskinstance.py:2613} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [queued]>
+[2026-03-04T07:36:30.656+0000] {taskinstance.py:2866} INFO - Starting attempt 1 of 1
+[2026-03-04T07:36:30.672+0000] {taskinstance.py:2889} INFO - Executing <Task(ExternalTaskSensor): esperar_ingestion_transaccional> on 2026-03-04 07:32:20.746829+00:00
+[2026-03-04T07:36:30.680+0000] {standard_task_runner.py:104} INFO - Running: ['***', 'tasks', 'run', 'dag_3_actualizacion_rag', 'esperar_ingestion_transaccional', 'manual__2026-03-04T07:32:20.746829+00:00', '--job-id', '40', '--raw', '--subdir', 'DAGS_FOLDER/dag_3_actualizacion_rag.py', '--cfg-path', '/tmp/tmpkvl85tox']
+[2026-03-04T07:36:30.683+0000] {standard_task_runner.py:105} INFO - Job 40: Subtask esperar_ingestion_transaccional
+[2026-03-04T07:36:30.683+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/task/task_runner/standard_task_runner.py:70 DeprecationWarning: This process (pid=464) is multi-threaded, use of fork() may lead to deadlocks in the child.
+[2026-03-04T07:36:30.684+0000] {standard_task_runner.py:72} INFO - Started process 466 to run task
+[2026-03-04T07:36:30.748+0000] {task_command.py:467} INFO - Running <TaskInstance: dag_3_actualizacion_rag.esperar_ingestion_transaccional manual__2026-03-04T07:32:20.746829+00:00 [running]> on host cd33c17cbc6c
+[2026-03-04T07:36:30.845+0000] {taskinstance.py:3132} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='dag_3_actualizacion_rag' AIRFLOW_CTX_TASK_ID='esperar_ingestion_transaccional' AIRFLOW_CTX_EXECUTION_DATE='2026-03-04T07:32:20.746829+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2026-03-04T07:32:20.746829+00:00'
+[2026-03-04T07:36:30.846+0000] {taskinstance.py:731} INFO - ::endgroup::
+[2026-03-04T07:36:30.861+0000] {baseoperator.py:421} WARNING - ExternalTaskSensor.execute cannot be called outside TaskInstance!
+[2026-03-04T07:36:30.873+0000] {external_task.py:274} INFO - Poking for DAG 'dag_1_ingestion_transaccional' on 2026-03-04T07:32:20.746829+00:00 ... 
+[2026-03-04T07:36:30.878+0000] {logging_mixin.py:190} WARNING - /home/***/.local/lib/python3.12/site-packages/***/utils/session.py:97 DeprecationWarning: This method is deprecated and will be removed in future.
+[2026-03-04T07:36:30.916+0000] {taskinstance.py:309} INFO - Rescheduling task, marking task as UP_FOR_RESCHEDULE
+[2026-03-04T07:36:30.916+0000] {taskinstance.py:340} INFO - ::group::Post task execution logs
+[2026-03-04T07:36:30.940+0000] {local_task_job_runner.py:266} INFO - Task exited with return code 0
+[2026-03-04T07:36:30.972+0000] {taskinstance.py:3895} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2026-03-04T07:36:30.975+0000] {local_task_job_runner.py:245} INFO - ::endgroup::

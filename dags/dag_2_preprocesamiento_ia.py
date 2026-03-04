@@ -13,7 +13,7 @@ from utils.ia import procesar_datos_ia
 with DAG(
     dag_id="dag_2_preprocesamiento_ia",
     schedule_interval=None,
-    start_date=datetime(2025, 1, 1),
+    start_date=datetime(2026, 1, 2),
     catchup=False,
     tags=["ia", "pytorch", "preprocesamiento", "nlp"],
 ) as dag:

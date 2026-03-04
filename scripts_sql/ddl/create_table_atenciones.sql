@@ -1,4 +1,6 @@
 -- BigQuery Standard SQL. Tabla de atenciones particionada por día y clusterizada.
+-- Particionamiento por fecha_atencion: ahorra costo (solo se escanean particiones usadas en el filtro)
+-- y mejora rendimiento en JOINs con clientes al estar clusterizada por id_cliente.
 -- Ejecutar con BigQueryInsertJobOperator; el DAG debe pasar params: bq_project, bq_dataset.
 CREATE OR REPLACE TABLE `{{ params.bq_project }}.{{ params.bq_dataset }}.atenciones` (
   id_atencion STRING,
@@ -15,5 +17,5 @@ CREATE OR REPLACE TABLE `{{ params.bq_project }}.{{ params.bq_dataset }}.atencio
 PARTITION BY DATE(fecha_atencion)
 CLUSTER BY id_cliente, estado
 OPTIONS(
-  description = 'Atenciones: partición por fecha_atencion, cluster por id_cliente y estado'
+  description = 'Atenciones: partición por fecha_atencion (ahorro y rendimiento), cluster por id_cliente y estado para JOINs rápidos'
 );

@@ -1,5 +1,6 @@
 -- KPI: total facturado y promedio de score crediticio por Segmento y Ciudad.
--- Solo atenciones con estado 'Completado'. BigQuery Standard SQL.
+-- Solo atenciones con estado 'Completado'. Crea la vista para consultas posteriores.
+CREATE OR REPLACE VIEW `{{ params.bq_project }}.{{ params.bq_dataset }}.v_kpi_valor_por_segmento` AS
 SELECT
   c.segmento,
   c.ciudad,

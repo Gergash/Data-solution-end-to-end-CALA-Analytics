@@ -23,7 +23,7 @@ def limpiar_datos_transaccionales() -> None:
 
 
 def cargar_bigquery_atenciones_clientes() -> None:
-    """Carga atenciones (partición fecha_proceso) y clientes a BigQuery."""
+    """Carga atenciones y clientes desde logs/cleaned/ a BigQuery. Tipos alineados con DDL (FLOAT64, INT64, JSON)."""
     try:
         from google.cloud import bigquery
     except ImportError:
@@ -44,9 +44,41 @@ def cargar_bigquery_atenciones_clientes() -> None:
         return
     df_at = pd.read_csv(path_at)
     df_cl = pd.read_csv(path_cl)
+
+    # Tipos alineados con DDL: valor_facturado FLOAT64, fechas TIMESTAMP
+    if "fecha_atencion" in df_at.columns:
+        df_at["fecha_atencion"] = pd.to_datetime(df_at["fecha_atencion"])
     if "fecha_proceso" in df_at.columns:
         df_at["fecha_proceso"] = pd.to_datetime(df_at["fecha_proceso"])
+    if "valor_facturado" in df_at.columns:
+        df_at["valor_facturado"] = pd.to_numeric(df_at["valor_facturado"], errors="coerce").astype("float64")
+    # json_detalle: BigQuery espera tipo JSON; el CSV viene como string (válido JSON)
+    if "json_detalle" in df_at.columns:
+        df_at["json_detalle"] = df_at["json_detalle"].astype(str).replace("nan", None)
+
+    # Clientes: score_crediticio INT64
+    if "score_crediticio" in df_cl.columns:
+        df_cl["score_crediticio"] = pd.to_numeric(df_cl["score_crediticio"], errors="coerce").astype("Int64")
+    if "fecha_registro" in df_cl.columns:
+        df_cl["fecha_registro"] = pd.to_datetime(df_cl["fecha_registro"])
+
+    # Schema atenciones: obligatorio para columna JSON (evita "Unable to determine type for field")
+    schema_atenciones = [
+        bigquery.SchemaField("id_atencion", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("id_cliente", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("documento_cliente", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("fecha_atencion", "TIMESTAMP", mode="NULLABLE"),
+        bigquery.SchemaField("fecha_proceso", "TIMESTAMP", mode="NULLABLE"),
+        bigquery.SchemaField("valor_facturado", "FLOAT64", mode="NULLABLE"),
+        bigquery.SchemaField("estado", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("codigo_cups", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("canal_ingreso", "STRING", mode="NULLABLE"),
+        bigquery.SchemaField("json_detalle", "JSON", mode="NULLABLE"),
+    ]
+    cols_at = [f.name for f in schema_atenciones]
+    df_at = df_at.reindex(columns=[c for c in cols_at if c in df_at.columns])
     job_config_at = bigquery.LoadJobConfig(
+        schema=schema_atenciones,
         write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
         time_partitioning=bigquery.TimePartitioning(
             type_=bigquery.TimePartitioningType.DAY,
@@ -57,38 +89,6 @@ def cargar_bigquery_atenciones_clientes() -> None:
     client.load_table_from_dataframe(
         df_cl, table_clientes, job_config=bigquery.LoadJobConfig(write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE)
     ).result()
-    print(f"[OK] BigQuery: {table_atenciones} (partición fecha_proceso), {table_clientes}")
+    print(f"[OK] BigQuery: {table_atenciones} (partición fecha_atencion), {table_clientes}")
 
 
-def ejecutar_sql_kpi_recurrencia() -> None:
-    """Crea vista v_kpi_recurrencia_30d para GET /kpis."""
-    try:
-        from google.cloud import bigquery
-    except ImportError:
-        print("[SKIP] google-cloud-bigquery no disponible.")
-        return
-    project_id = os.environ.get("BQ_PROJECT_ID") or os.environ.get("GCP_PROJECT_ID")
-    dataset_id = os.environ.get("BQ_DATASET_ID", "cala_analytics")
-    if not project_id:
-        print("[SKIP] BQ_PROJECT_ID no definido.")
-        return
-    client = bigquery.Client(project=project_id)
-    view_id = f"{project_id}.{dataset_id}.v_kpi_recurrencia_30d"
-    sql = f"""
-    CREATE OR REPLACE VIEW `{view_id}` AS
-    WITH ventana AS (
-      SELECT id_cliente, fecha_proceso,
-        COUNT(*) OVER (
-          PARTITION BY id_cliente
-          ORDER BY DATE(fecha_proceso)
-          RANGE BETWEEN INTERVAL 30 DAY PRECEDING AND CURRENT ROW
-        ) AS atenciones_30d
-      FROM `{project_id}.{dataset_id}.atenciones`
-      WHERE fecha_proceso IS NOT NULL
-    )
-    SELECT fecha_proceso, COUNT(DISTINCT id_cliente) AS clientes_recurrentes_30d
-    FROM ventana WHERE atenciones_30d >= 2
-    GROUP BY fecha_proceso ORDER BY fecha_proceso
-    """
-    client.query(sql).result()
-    print(f"[OK] BigQuery: vista {view_id} creada.")

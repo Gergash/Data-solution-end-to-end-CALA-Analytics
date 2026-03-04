@@ -30,10 +30,17 @@
         var isGitHubPages = typeof window !== 'undefined' && window.location.hostname.indexOf('github.io') !== -1;
         var apiOrigin = (window.location.origin && window.location.origin.startsWith('http')) ? window.location.origin : 'http://localhost:8000';
         function urlMetrics() {
-            return isGitHubPages ? './metrics.json?t=' + new Date().getTime() : apiOrigin + '/metrics';
+            // Si estamos en github.io, usamos el archivo .json. Si no, usamos la API local.
+            if (isGitHubPages) {
+                return './metrics.json?t=' + new Date().getTime();
+            }
+            return apiOrigin + '/metrics';
         }
         function urlRazonamiento() {
-            return isGitHubPages ? './razonamiento.json?t=' + new Date().getTime() : apiOrigin + '/razonamiento';
+            if (isGitHubPages) {
+                return './razonamiento.json?t=' + new Date().getTime();
+            }
+            return apiOrigin + '/razonamiento';
         }
 
         // ----- Gauge (izquierda): 0-300 verde, 300-800 amarillo, 800+ rojo -----

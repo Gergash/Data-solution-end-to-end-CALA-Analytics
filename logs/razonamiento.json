@@ -2,7 +2,7 @@
   "nodes": [
     {
       "id": "query_1",
-      "name": "Cual es la arquitectura de este sistema?",
+      "name": "Cual es la arquitectura de este sistema",
       "symbolSize": 50,
       "category": 0
     },
@@ -19,14 +19,14 @@
       "category": 1
     },
     {
-      "id": "faq_operativa.md",
-      "name": "faq_operativa.md",
+      "id": "politicas.md",
+      "name": "politicas.md",
       "symbolSize": 30,
       "category": 1
     },
     {
-      "id": "politicas.md",
-      "name": "politicas.md",
+      "id": "faq_operativa.md",
+      "name": "faq_operativa.md",
       "symbolSize": 30,
       "category": 1
     },
@@ -48,11 +48,11 @@
     },
     {
       "source": "query_1",
-      "target": "faq_operativa.md"
+      "target": "politicas.md"
     },
     {
       "source": "query_1",
-      "target": "politicas.md"
+      "target": "faq_operativa.md"
     },
     {
       "source": "query_1",

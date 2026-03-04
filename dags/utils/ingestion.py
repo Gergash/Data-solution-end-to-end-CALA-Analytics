@@ -50,7 +50,7 @@ def cargar_bigquery_atenciones_clientes() -> None:
         write_disposition=bigquery.WriteDisposition.WRITE_TRUNCATE,
         time_partitioning=bigquery.TimePartitioning(
             type_=bigquery.TimePartitioningType.DAY,
-            field="fecha_proceso",
+            field="fecha_atencion",
         ),
     )
     client.load_table_from_dataframe(df_at, table_atenciones, job_config=job_config_at).result()

@@ -1,18 +1,28 @@
 """
 DAG 1: Ingestión transaccional (BigQuery).
-Flujo exclusivo de ingeniería de datos: limpieza → carga particionada → KPI recurrencia 30d.
-Si falla la conexión a la nube, el procesamiento local de IA (DAG 2) y RAG (DAG 3) no se ven afectados.
+Flujo: limpieza → DDL (tablas desde scripts_sql) → carga → KPIs desde SQL externos.
+Todo el SQL está en /scripts_sql/ como plantillas Jinja; sin SQL embebido en Python.
 """
+import os
 from datetime import datetime
 
 from airflow import DAG
 from airflow.operators.python import PythonOperator
+from airflow.providers.google.cloud.operators.bigquery import BigQueryInsertJobOperator
 
 from utils.ingestion import (
     cargar_bigquery_atenciones_clientes,
-    ejecutar_sql_kpi_recurrencia,
     limpiar_datos_transaccionales,
 )
+
+# Búsqueda de plantillas: Airflow resuelve {% include '...' %} desde esta ruta (Docker: /opt/airflow/scripts_sql)
+TEMPLATE_SEARCHPATH = ["/opt/airflow/scripts_sql"]
+
+# Parámetros inyectados en todos los .sql (bq_project, bq_dataset)
+DEFAULT_PARAMS = {
+    "bq_project": os.environ.get("BQ_PROJECT_ID") or os.environ.get("GCP_PROJECT_ID") or "",
+    "bq_dataset": os.environ.get("BQ_DATASET_ID", "cala_analytics"),
+}
 
 with DAG(
     dag_id="dag_1_ingestion_transaccional",
@@ -20,17 +30,62 @@ with DAG(
     start_date=datetime(2026, 1, 2),
     catchup=False,
     tags=["bigquery", "ingestion", "kpis"],
+    template_searchpath=TEMPLATE_SEARCHPATH,
+    default_params=DEFAULT_PARAMS,
 ) as dag:
     limpiar = PythonOperator(
         task_id="limpiar_y_estandarizar",
         python_callable=limpiar_datos_transaccionales,
     )
+    # Creación de tablas (DDL externos)
+    crear_tabla_atenciones = BigQueryInsertJobOperator(
+        task_id="crear_tabla_atenciones",
+        project_id="{{ params.bq_project }}",
+        configuration={
+            "query": {
+                "query": "{% include 'ddl/create_table_atenciones.sql' %}",
+                "useLegacySql": False,
+            }
+        },
+    )
+    crear_tabla_clientes = BigQueryInsertJobOperator(
+        task_id="crear_tabla_clientes",
+        project_id="{{ params.bq_project }}",
+        configuration={
+            "query": {
+                "query": "{% include 'ddl/create_table_clientes.sql' %}",
+                "useLegacySql": False,
+            }
+        },
+    )
     cargar_bq = PythonOperator(
         task_id="cargar_bigquery_atenciones_clientes",
         python_callable=cargar_bigquery_atenciones_clientes,
     )
-    sql_kpi = PythonOperator(
-        task_id="ejecutar_sql_kpi_recurrencia",
-        python_callable=ejecutar_sql_kpi_recurrencia,
+    # KPIs: vistas desde archivos SQL externos
+    ejecutar_kpi_valor_segmento = BigQueryInsertJobOperator(
+        task_id="ejecutar_kpi_valor_por_segmento",
+        project_id="{{ params.bq_project }}",
+        configuration={
+            "query": {
+                "query": "{% include 'queries/kpi_valor_por_segmento.sql' %}",
+                "useLegacySql": False,
+            }
+        },
     )
-    limpiar >> cargar_bq >> sql_kpi
+    ejecutar_kpi_recurrencia = BigQueryInsertJobOperator(
+        task_id="ejecutar_kpi_recurrencia_30d",
+        project_id="{{ params.bq_project }}",
+        configuration={
+            "query": {
+                "query": "{% include 'queries/kpi_recurrencia_30d.sql' %}",
+                "useLegacySql": False,
+            }
+        },
+    )
+
+    # Orden lógico: Crear tablas → Cargar datos → Ejecutar consultas KPI
+    limpiar >> [crear_tabla_atenciones, crear_tabla_clientes] >> cargar_bq >> [
+        ejecutar_kpi_valor_segmento,
+        ejecutar_kpi_recurrencia,
+    ]

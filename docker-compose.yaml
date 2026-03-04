@@ -27,6 +27,7 @@ x-airflow-common:
     GITHUB_REPO: ${GITHUB_REPO:-}
   volumes:
     - .:/opt/airflow
+    - ./scripts_sql:/opt/airflow/scripts_sql
     - ./Dataset_Prueba_Tecnica_GCP_RAG/kb:/opt/airflow/kb
   user: "${AIRFLOW_UID:-50000}:0"
   depends_on:

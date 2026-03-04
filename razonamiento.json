@@ -2,21 +2,9 @@
   "nodes": [
     {
       "id": "query_1",
-      "name": "Este sistema estara listo con que compon…",
+      "name": "creo que ya me esta empezando a dar migr…",
       "symbolSize": 50,
       "category": 0
-    },
-    {
-      "id": "glosario_eventos.md",
-      "name": "glosario_eventos.md",
-      "symbolSize": 30,
-      "category": 1
-    },
-    {
-      "id": "politicas.md",
-      "name": "politicas.md",
-      "symbolSize": 30,
-      "category": 1
     },
     {
       "id": "faq_operativa.md",
@@ -31,6 +19,18 @@
       "category": 1
     },
     {
+      "id": "glosario_eventos.md",
+      "name": "glosario_eventos.md",
+      "symbolSize": 30,
+      "category": 1
+    },
+    {
+      "id": "politicas.md",
+      "name": "politicas.md",
+      "symbolSize": 30,
+      "category": 1
+    },
+    {
       "id": "definiciones.md",
       "name": "definiciones.md",
       "symbolSize": 30,
@@ -40,19 +40,19 @@
   "links": [
     {
       "source": "query_1",
-      "target": "glosario_eventos.md"
-    },
-    {
-      "source": "query_1",
-      "target": "politicas.md"
-    },
-    {
-      "source": "query_1",
       "target": "faq_operativa.md"
     },
     {
       "source": "query_1",
       "target": "arquitectura_actual.md"
+    },
+    {
+      "source": "query_1",
+      "target": "glosario_eventos.md"
+    },
+    {
+      "source": "query_1",
+      "target": "politicas.md"
     },
     {
       "source": "query_1",

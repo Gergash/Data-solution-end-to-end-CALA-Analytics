@@ -2,26 +2,176 @@
   {
     "archivo": "arquitectura_actual.md",
     "fragmento": 1,
-    "texto": "# Arquitectura\nEl sistema utiliza BigQuery y Airflow."
+    "texto": "# Arquitectura del Sistema: CALA Analytics (Ecosistema Data & IA)\n\n## 1. Resumen Ejecutivo\nLa solución \"CALA Analytics\" es una plataforma integral de datos diseñada para la ingesta, procesamiento, análisis y consulta inteligente de información transaccional y operativa. Combina un robusto Data Warehouse en la nube con un motor de Inteligencia Artificial (RAG) para ofrecer respuestas contextuales basadas en documentación técnica.\n\n## 2. Componentes de la Infraestructura\n\n### A. Orquestación (Apac"
+  },
+  {
+    "archivo": "arquitectura_actual.md",
+    "fragmento": 2,
+    "texto": "s de la Infraestructura\n\n### A. Orquestación (Apache Airflow)\nEl sistema utiliza Airflow para gestionar la dependencia de tareas mediante tres DAGs principales:\n* **DAG 1 (Ingesta Transaccional):** Extrae datos de archivos locales (`atenciones.csv`, `clientes.csv`), realiza limpieza de tipos de datos con Pandas (conversión de IDs a String y manejo de JSON) y los carga en BigQuery.\n* **DAG 2 (Preproceso de Conocimiento):** Escanea la carpeta `kb/` en busca de archivos Markdown y PDF, fragmentando"
+  },
+  {
+    "archivo": "arquitectura_actual.md",
+    "fragmento": 3,
+    "texto": "en busca de archivos Markdown y PDF, fragmentando el texto en \"chunks\" optimizados para la IA.\n* **DAG 3 (Actualización RAG):** Genera embeddings vectoriales y actualiza el índice FAISS para asegurar que el motor de búsqueda tenga la información más reciente.\n\n### B. Almacenamiento y Cómputo (Google BigQuery)\nLos datos se almacenan en un dataset denominado `cala_analytics` bajo el proyecto `data-solution-end-to-end-21`.\n* **Optimización de Costos:** Se utiliza **Particionamiento por Día** en el"
+  },
+  {
+    "archivo": "arquitectura_actual.md",
+    "fragmento": 4,
+    "texto": "s:** Se utiliza **Particionamiento por Día** en el campo `fecha_atencion` y **Clustering** por `id_cliente` y `estado` para evitar escaneos completos de tablas (Full Table Scans).\n* **Capa de Negocio:** Se implementaron Vistas SQL para calcular KPIs de latencia, recurrencia de 30 días y valor facturado por segmento.\n\n### C. Motor de IA (Retrieval Augmented Generation - RAG)\nEl sistema de consultas utiliza una arquitectura de búsqueda semántica:\n* **Vector Store:** FAISS (Facebook AI Similarity S"
+  },
+  {
+    "archivo": "arquitectura_actual.md",
+    "fragmento": 5,
+    "texto": "**Vector Store:** FAISS (Facebook AI Similarity Search) para indexación de alta velocidad.\n* **Embeddings:** Modelos de lenguaje para convertir texto en vectores numéricos.\n* **API de Consulta:** Desarrollada en FastAPI, recibe preguntas del usuario, busca el contexto más relevante en los documentos y genera una respuesta precisa citando la fuente.\n\n## 3. Flujo de Datos (Data Pipeline)\n1. **Source:** Archivos CSV/JSON en el volumen montado de Docker.\n2. **Processing:** Transformación de tipos d"
+  },
+  {
+    "archivo": "arquitectura_actual.md",
+    "fragmento": 6,
+    "texto": "cker.\n2. **Processing:** Transformación de tipos de datos `int64` a `string` en Python para compatibilidad con BigQuery.\n3. **Load:** Carga mediante `load_table_from_dataframe` con configuraciones de `job_config` que respetan el particionamiento.\n4. **Insights:** Consultas sobre las vistas de KPI para el Dashboard.\n\n## 4. Decisiones de Escalabilidad\nSi el volumen de datos creciera 10x, el sistema está preparado para migrar de Docker local a **Cloud Composer** (GCP) y utilizar **Vistas Materializ"
+  },
+  {
+    "archivo": "arquitectura_actual.md",
+    "fragmento": 7,
+    "texto": "ud Composer** (GCP) y utilizar **Vistas Materializadas** en BigQuery para reducir el tiempo de respuesta y los costos de procesamiento."
   },
   {
     "archivo": "definiciones.md",
     "fragmento": 1,
-    "texto": "# Definiciones\nUn evento LOGIN representa autenticación exitosa."
+    "texto": "# Diccionario de Datos y Definiciones de Negocio: CALA Analytics\n\n## 1. Entidades Principales (Tablas Base)\n\n### Tabla: atenciones\nRegistro de cada interacción de servicio con un cliente.\n* **id_atencion (STRING):** Identificador único del registro (Convertido de int64 para compatibilidad).\n* **id_cliente (STRING):** Llave foránea que conecta con la tabla de clientes (Clustered).\n* **fecha_atencion (DATE):** Campo de particionamiento diario para optimización de costos.\n* **valor_facturado (FLOAT"
+  },
+  {
+    "archivo": "definiciones.md",
+    "fragmento": 2,
+    "texto": "optimización de costos.\n* **valor_facturado (FLOAT):** Monto económico de la atención.\n* **json_detalle (JSON):** Campo semi-estructurado con telemetría técnica de la plataforma.\n\n### Tabla: clientes\nMaestro de usuarios de la plataforma.\n* **id_cliente (STRING):** Identificador único del cliente.\n* **segmento (STRING):** Categorización comercial (Ej: 'Particular', 'Convenio', 'EPS').\n* **ciudad (STRING):** Ubicación geográfica para análisis de densidad.\n\n## 2. Lógica de KPIs (Vistas de Negocio)"
+  },
+  {
+    "archivo": "definiciones.md",
+    "fragmento": 3,
+    "texto": "nsidad.\n\n## 2. Lógica de KPIs (Vistas de Negocio)\n\n### KPI: Valor por Segmento (`v_kpi_valor_por_segmento`)\n* **Definición:** Sumatoria del `valor_facturado` agrupado por la ciudad y el segmento del cliente.\n* **Utilidad:** Identificar qué regiones y qué tipos de clientes generan el mayor ingreso bruto.\n* **Filtro Técnico:** Requiere un `INNER JOIN` exitoso entre `atenciones` y `clientes`.\n\n### KPI: Recurrencia a 30 Días (`v_kpi_recurrencia_30d`)\n* **Definición:** Porcentaje de clientes que tien"
+  },
+  {
+    "archivo": "definiciones.md",
+    "fragmento": 4,
+    "texto": "* **Definición:** Porcentaje de clientes que tienen más de una atención en un periodo de 30 días corridos.\n* **Cálculo:** Utiliza funciones de ventana `COUNT(id_atencion) OVER(PARTITION BY id_cliente)` filtrando por fechas relativas.\n\n### KPI: Latencia de Plataforma (`v_kpi_latencia_plataforma`)\n* **Definición:** Tiempo promedio de respuesta extraído del campo `json_detalle`.\n* **Procesamiento:** Utiliza la función `JSON_EXTRACT_SCALAR` de BigQuery para convertir datos anidados en métricas de r"
+  },
+  {
+    "archivo": "definiciones.md",
+    "fragmento": 5,
+    "texto": "ery para convertir datos anidados en métricas de rendimiento.\n\n## 3. Glosario Técnico de la Solución\n* **Full Table Scan:** Error de eficiencia donde se lee toda la tabla. Se evita usando `WHERE fecha_atencion = 'YYYY-MM-DD'`.\n* **Embeddings:** Representación numérica de estas definiciones que permite a la IA realizar búsquedas semánticas.\n* **Clustering:** Organización de datos por `id_cliente` para acelerar búsquedas de historial médico/atenciones."
+  },
+  {
+    "archivo": "definiciones.md",
+    "fragmento": 6,
+    "texto": "nes."
   },
   {
     "archivo": "faq_operativa.md",
     "fragmento": 1,
-    "texto": "# FAQ\n¿Cómo validar una atención? Revisando estado y valor facturado."
+    "texto": "# FAQ Operativa y Guía de Solución de Problemas (Troubleshooting)\n\n## 1. Preguntas sobre Carga de Datos (ETL)\n\n### ¿Por qué el conteo de filas en BigQuery es 0 después de correr el DAG?\n* **Causa 1:** Las variables `GCP_PROJECT_ID` o `BQ_PROJECT_ID` no están definidas en Airflow (Admin -> Variables). El script saltará la carga con un mensaje `[SKIP]`.\n* **Causa 2:** Error de tipos de datos. Pandas lee los IDs como `int64` pero BigQuery espera `STRING`. \n* **Solución:** Asegurar que en `utils/ing"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 2,
+    "texto": "RING`. \n* **Solución:** Asegurar que en `utils/ingestion.py` se use `dtype={'id_atencion': str}` al leer el CSV.\n\n### ¿Cómo manejo el error \"Unsupported field type: JSON\"?\n* **Causa:** La librería `load_table_from_dataframe` no mapea directamente objetos complejos a JSON nativo de BQ.\n* **Solución:** Convertir la columna a string usando `json.dumps()` en Python y definir el campo como `STRING` en el `job_config`. BigQuery hará el cast automático al insertar.\n\n### ¿Qué hago si sale un error de \"I"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 3,
+    "texto": "al insertar.\n\n### ¿Qué hago si sale un error de \"Incompatible table partitioning\"?\n* **Causa:** La tabla en BigQuery fue creada con Clustering o Particionamiento, pero el Job de carga no incluye esa especificación.\n* **Solución:** Actualizar el `LoadJobConfig` en el script de carga para incluir `clustering_fields=['id_cliente', 'estado']`.\n\n## 2. Preguntas sobre Infraestructura y GCP\n\n### ¿Cómo se autentica el sistema con Google Cloud?\nEl sistema utiliza una **Service Account** (Cuenta de Servic"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 4,
+    "texto": "utiliza una **Service Account** (Cuenta de Servicio) con roles de `BigQuery Admin`. La llave privada se almacena en `gcp-credentials/key.json`. Si el archivo no existe, las tareas de Airflow fallarán por falta de permisos.\n\n### ¿Por qué falló la creación de la Service Account al inicio?\nDebido a una política de organización de GCP llamada `iam.disableServiceAccountKeyCreation`. Se debió desactivar esta restricción a nivel de proyecto para permitir la generación del archivo JSON necesario para D"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 5,
+    "texto": "ir la generación del archivo JSON necesario para Docker.\n\n## 3. Consultas y KPIs\n\n### ¿Por qué la vista de KPIs no muestra resultados si hay datos en 'atenciones'?\nProbablemente la tabla `clientes` está vacía o los IDs no coinciden. La vista usa un `INNER JOIN`, por lo que si el `id_cliente` no existe en ambas tablas, el registro desaparece del reporte. Verifica que ambos archivos CSV tengan la misma codificación de IDs.\n\n### ¿Cómo evito costos altos al consultar BigQuery?\n* Siempre usa filtros"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 6,
+    "texto": "ltos al consultar BigQuery?\n* Siempre usa filtros por fecha (`fecha_atencion`) para activar el particionamiento.\n* Evita usar `SELECT *`. Selecciona solo las columnas necesarias.\n* El sistema usa Clustering, lo que significa que filtrar por `id_cliente` es extremadamente eficiente y barato.\n\n## 4. Errores de Conectividad y Configuración de Airflow\n\n### ¿Por qué aparece el error \"Unexpected keyword END\" en BigQuery?\n* **Causa:** El ID del proyecto (`data-solution-end-to-end-21`) contiene guiones."
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 7,
+    "texto": "(`data-solution-end-to-end-21`) contiene guiones. SQL interpreta los guiones como operadores de resta o confunde partes del nombre con palabras reservadas.\n* **Solución:** Envolver siempre el nombre de la tabla/proyecto en comillas invertidas (backticks): `` `proyecto.dataset.tabla` ``.\n\n### ¿Por qué la variable de entorno no se refleja en el DAG?\n* **Causa:** Airflow no siempre toma los cambios del archivo `.env` o de la terminal del host de forma inmediata dentro de los contenedores Workers."
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 8,
+    "texto": "rma inmediata dentro de los contenedores Workers.\n* **Solución:** Utilizar `Variable.get(\"GCP_PROJECT_ID\")` desde el menú **Admin -> Variables** de la UI de Airflow. Es más persistente y fácil de auditar que las variables de entorno de sistema.\n\n## 5. Errores de Transformación con Pandas y PyArrow\n\n### ¿Por qué falla la carga con el error \"Expected a string or bytes dtype, got int64\"?\n* **Causa:** Pandas infiere que columnas como `id_atencion` son números enteros. Sin embargo, el esquema (DDL) d"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 9,
+    "texto": "n números enteros. Sin embargo, el esquema (DDL) de BigQuery define estas columnas como `STRING`. PyArrow (el motor de carga) bloquea la operación por incompatibilidad de tipos.\n* **Solución:** Forzar el tipo de datos al leer el CSV: `pd.read_csv(path, dtype={'id_atencion': str})` o convertir la columna antes de la carga: `df['id_atencion'] = df['id_atencion'].astype(str)`.\n\n### ¿Por qué el log muestra \"Done. Returned value was: None\" pero no hay datos?\n* **Causa:** El script de Python tiene una"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 10,
+    "texto": "datos?\n* **Causa:** El script de Python tiene una validación de seguridad que retorna `None` si no encuentra las credenciales o el ID del proyecto, sin lanzar una excepción (Silent Failure).\n* **Solución:** Revisar los logs de Airflow buscando el mensaje `[SKIP]`. Si aparece, significa que la lógica de carga nunca se ejecutó realmente por falta de parámetros.\n\n## 6. Errores de la API RAG y Embeddings\n\n### ¿Por qué la API responde \"No tengo información suficiente\"?\n* **Causa:** El archivo de bas"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 11,
+    "texto": "mación suficiente\"?\n* **Causa:** El archivo de base de conocimientos (`.md`) existe, pero no se ha actualizado el índice vectorial.\n* **Solución:** Se deben ejecutar en orden el **DAG 2** (para procesar el texto) y el **DAG 3** (para generar los vectores en FAISS). Sin el archivo `faiss.index` actualizado, la API solo tiene memoria de los documentos viejos.\n\n### ¿Cómo se explica la latencia de ~770ms en las respuestas?\n* **Optimización:** El uso de **FAISS** (Facebook AI Similarity Search) permi"
+  },
+  {
+    "archivo": "faq_operativa.md",
+    "fragmento": 12,
+    "texto": "de **FAISS** (Facebook AI Similarity Search) permite realizar búsquedas en milisegundos incluso con miles de documentos. La mayor parte del tiempo de respuesta se debe a la generación de la respuesta final por el LLM, no a la búsqueda del contexto."
   },
   {
     "archivo": "glosario_eventos.md",
     "fragmento": 1,
-    "texto": "# Glosario\nERROR indica fallo del sistema."
+    "texto": "# Glosario de Eventos y Telemetría: CALA Analytics\n\n## 1. Estructura del Evento JSON\nCada registro en la tabla `eventos_app` representa una acción del usuario en la interfaz o una respuesta del servidor, capturada en formato semi-estructurado.\n\n### Campos Principales:\n* **event_id (STRING):** Identificador único del evento de telemetría.\n* **timestamp (DATETIME):** Momento exacto de la ocurrencia (UTC).\n* **tipo_evento (STRING):** Categoría de la acción (Ej: 'login', 'search_query', 'api_call',"
+  },
+  {
+    "archivo": "glosario_eventos.md",
+    "fragmento": 2,
+    "texto": "acción (Ej: 'login', 'search_query', 'api_call', 'error_report').\n* **plataforma (STRING):** Origen del evento (Ej: 'Web', 'Android', 'iOS').\n\n## 2. Definición del Campo `json_detalle`\nEste campo contiene un objeto anidado con métricas técnicas específicas. La vista de latencia extrae datos de aquí.\n\n### Atributos dentro del JSON:\n* **latencia_ms (NUMBER):** Tiempo de respuesta del servidor en milisegundos. \n    * *Cálculo de KPI:* Se promedia este valor para medir la salud de la plataforma.\n*"
+  },
+  {
+    "archivo": "glosario_eventos.md",
+    "fragmento": 3,
+    "texto": "ste valor para medir la salud de la plataforma.\n* **status_code (NUMBER):** Código de respuesta HTTP (Ej: 200 para éxito, 500 para error).\n* **user_agent (STRING):** Información del navegador o dispositivo del usuario.\n* **version_app (STRING):** Versión del software que generó el evento.\n\n## 3. Lógica de Extracción en BigQuery\nPara transformar estos datos en métricas legibles, se utiliza la función `JSON_EXTRACT_SCALAR`.\n\n**Ejemplo de Consulta Técnica:**\n```sql\nSELECT \n    plataforma, \n    AVG("
+  },
+  {
+    "archivo": "glosario_eventos.md",
+    "fragmento": 4,
+    "texto": "écnica:**\n```sql\nSELECT \n    plataforma, \n    AVG(SAFE_CAST(JSON_EXTRACT_SCALAR(json_detalle, '$.latencia_ms') AS FLOAT64)) as latencia_promedio\nFROM `data-solution-end-to-end-21.cala_analytics.eventos_app`\nGROUP BY 1;"
   },
   {
     "archivo": "politicas.md",
     "fragmento": 1,
-    "texto": "# Políticas\nLas atenciones deben estar asociadas a un cliente válido."
+    "texto": "# Políticas de Seguridad, Privacidad y Gobernanza: CALA Analytics\n\n## 1. Protección de Datos y Privacidad (GDPR / Ley 1581)\nLa plataforma \"CALA Analytics\" sigue los principios de privacidad por diseño en la infraestructura de Google Cloud.\n\n* **Encriptación en Reposo:** Todos los datos almacenados en BigQuery (`atenciones`, `clientes`, `eventos_app`) están encriptados automáticamente por Google utilizando AES-256.\n* **Encriptación en Tránsito:** La comunicación entre Airflow, la API FastAPI y Bi"
+  },
+  {
+    "archivo": "politicas.md",
+    "fragmento": 2,
+    "texto": "La comunicación entre Airflow, la API FastAPI y BigQuery se realiza exclusivamente a través de túneles TLS/SSL (HTTPS).\n* **Anonimización:** Para análisis de segmentación, se recomienda el uso de `documento_cliente` de forma truncada o hasheada en las vistas públicas para proteger la identidad del usuario.\n\n## 2. Gestión de Accesos (IAM - Identity and Access Management)\nEl acceso a los recursos de GCP está estrictamente controlado mediante Roles de Mínimo Privilegio:\n* **Service Account (SA):**"
+  },
+  {
+    "archivo": "politicas.md",
+    "fragmento": 3,
+    "texto": "de Mínimo Privilegio:\n* **Service Account (SA):** El sistema utiliza una cuenta de servicio única para los DAGs de Airflow.\n* **Roles Asignados:** `roles/bigquery.dataEditor` (para cargar datos) y `roles/bigquery.jobUser` (para ejecutar consultas).\n* **Restricción de Llaves:** Se prohíbe el uso de llaves JSON en repositorios públicos. El archivo `key.json` debe estar incluido en el `.gitignore`.\n\n## 3. Gobernanza de BigQuery\nPara mantener la salud del Data Warehouse, se aplican las siguientes po"
+  },
+  {
+    "archivo": "politicas.md",
+    "fragmento": 4,
+    "texto": "d del Data Warehouse, se aplican las siguientes políticas operativas:\n* **Retención de Datos:** Los datos en tablas particionadas tienen una política de expiración sugerida de 2 años para optimizar costos de almacenamiento a largo plazo.\n* **Cuotas de Consulta:** Se prohíbe el uso de `SELECT *` en entornos de producción para evitar el consumo innecesario de cuota de escaneo de bytes.\n* **Clustering Obligatorio:** Toda tabla con más de 10 millones de registros debe implementar Clustering por IDs"
+  },
+  {
+    "archivo": "politicas.md",
+    "fragmento": 5,
+    "texto": "de registros debe implementar Clustering por IDs de búsqueda frecuente para garantizar el rendimiento.\n\n## 4. Ética y Uso de la IA (RAG)\n* **Veracidad:** El motor RAG tiene prohibido \"alucinar\". Si la información no se encuentra en los documentos de la carpeta `kb/`, la API debe responder: \"No tengo información suficiente en los manuales técnicos para responder esto\".\n* **Filtro de Contenido:** La API no procesa ni almacena datos sensibles de salud (PHI) en los logs de la IA para cumplir con no"
+  },
+  {
+    "archivo": "politicas.md",
+    "fragmento": 6,
+    "texto": "lud (PHI) en los logs de la IA para cumplir con normativas de seguridad de la información médica."
   }
 ]

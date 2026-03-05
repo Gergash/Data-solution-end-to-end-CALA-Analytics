@@ -15452,3 +15452,127 @@ File Path                                           PID    Runtime      # DAGs  
 /opt/airflow/dags/utils/ingestion.py                                         0           0  0.14s           2026-03-05T03:03:27                       3
 /opt/airflow/dags/utils/__init__.py                                          0           0  0.12s           2026-03-05T03:03:28                       3
 ================================================================================
+[2026-03-05T03:04:23.542+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.25s           2026-03-05T03:03:59                      10
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.23s           2026-03-05T03:03:59                      10
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.23s           2026-03-05T03:03:59                      11
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.15s           2026-03-05T03:03:59                       3
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.11s           2026-03-05T03:03:59                       3
+================================================================================
+[2026-03-05T03:04:27.590+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2026-03-05T03:04:27.770+0000] {manager.py:824} INFO - There are 5 files in /opt/airflow/dags
+[2026-03-05T03:04:54.502+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.27s           2026-03-05T03:04:30                      11
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.16s           2026-03-05T03:04:30                      10
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.16s           2026-03-05T03:04:30                      10
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.14s           2026-03-05T03:04:30                       3
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.11s           2026-03-05T03:04:30                       3
+================================================================================
+[2026-03-05T03:05:28.685+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.17s           2026-03-05T03:05:00                      11
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.17s           2026-03-05T03:05:01                      10
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.17s           2026-03-05T03:05:00                      10
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.10s           2026-03-05T03:05:00                       3
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.09s           2026-03-05T03:05:00                       3
+================================================================================
+[2026-03-05T03:06:01.686+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                             PID  Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py   8073  0.11s             1           0  0.19s           2026-03-05T03:05:31                      11
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.16s           2026-03-05T03:05:31                      10
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.15s           2026-03-05T03:05:31                      10
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.11s           2026-03-05T03:06:01                       3
+/opt/airflow/dags/utils/__init__.py                  8078  0.01s             0           0  0.08s           2026-03-05T03:05:30                       3
+================================================================================
+[2026-03-05T03:06:35.336+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.18s           2026-03-05T03:06:32                      11
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.18s           2026-03-05T03:06:32                      10
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.15s           2026-03-05T03:06:32                      10
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.12s           2026-03-05T03:06:32                       3
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.10s           2026-03-05T03:06:31                       3
+================================================================================
+[2026-03-05T03:07:08.753+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.17s           2026-03-05T03:07:02                      11
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.17s           2026-03-05T03:07:02                      10
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.17s           2026-03-05T03:07:02                      10
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.09s           2026-03-05T03:07:02                       3
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.07s           2026-03-05T03:07:02                       3
+================================================================================
+[2026-03-05T03:07:42.841+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.17s           2026-03-05T03:07:32                      11
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.17s           2026-03-05T03:07:32                      10
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.16s           2026-03-05T03:07:32                      10
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.09s           2026-03-05T03:07:32                       3
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.08s           2026-03-05T03:07:32                       3
+================================================================================
+[2026-03-05T03:08:16.290+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.18s           2026-03-05T03:08:02                      11
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.17s           2026-03-05T03:08:02                      10
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.17s           2026-03-05T03:08:03                      10
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.11s           2026-03-05T03:08:02                       3
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.08s           2026-03-05T03:08:02                       3
+================================================================================
+[2026-03-05T03:08:50.372+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.17s           2026-03-05T03:08:32                      11
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.17s           2026-03-05T03:08:33                      10
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.16s           2026-03-05T03:08:33                      10
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.09s           2026-03-05T03:08:32                       3
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.07s           2026-03-05T03:08:32                       3
+================================================================================
+[2026-03-05T03:09:23.837+0000] {manager.py:997} INFO - 
+================================================================================
+DAG File Processing Stats
+
+File Path                                           PID    Runtime      # DAGs    # Errors  Last Runtime    Last Run               Last # of DB Queries
+--------------------------------------------------  -----  ---------  --------  ----------  --------------  -------------------  ----------------------
+/opt/airflow/dags/dag_1_ingestion_transaccional.py                           1           0  0.26s           2026-03-05T03:09:03                      11
+/opt/airflow/dags/dag_3_actualizacion_rag.py                                 1           0  0.17s           2026-03-05T03:09:03                      10
+/opt/airflow/dags/dag_2_preprocesamiento_ia.py                               1           0  0.16s           2026-03-05T03:09:03                      10
+/opt/airflow/dags/utils/__init__.py                                          0           0  0.14s           2026-03-05T03:09:03                       3
+/opt/airflow/dags/utils/ingestion.py                                         0           0  0.09s           2026-03-05T03:09:02                       3
+================================================================================
+[2026-03-05T03:09:27.729+0000] {manager.py:821} INFO - Searching for files in /opt/airflow/dags
+[2026-03-05T03:09:27.894+0000] {manager.py:824} INFO - There are 5 files in /opt/airflow/dags

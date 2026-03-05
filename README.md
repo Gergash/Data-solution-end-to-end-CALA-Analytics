@@ -8,7 +8,7 @@
 
 ## Visión General
 
-CALA Analytics es una plataforma integral que combina Ingeniería de Datos tradicional con Inteligencia Artificial Generativa. Su propósito es escalar, automatizar y extraer valor tanto de datos transaccionales como de documentación técnica, ofreciendo una solución 360° que abarca desde la ingesta de datos hasta un asistente conversacional basado en RAG (Retrieval Augmented Generation).
+Plataforma integral que combina Ingeniería de Datos tradicional con Inteligencia Artificial Generativa. Su propósito es escalar, automatizar y extraer valor tanto de datos transaccionales como de documentación técnica, ofreciendo una solución 360° que abarca desde la ingesta de datos hasta un asistente conversacional basado en RAG (Retrieval Augmented Generation).
 
 La solución se sustenta en tres capas: una capa de **orquestación** gestionada con Apache Airflow, un **Data Warehouse** en Google BigQuery y un **motor de IA** construido con FastAPI y FAISS como base de datos vectorial. Juntas, estas capas garantizan la integridad, disponibilidad y capacidad de razonamiento sobre los datos.
 
